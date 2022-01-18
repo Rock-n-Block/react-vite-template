@@ -91,9 +91,11 @@ video {
 
   border: 0;
 }
+
 * {
   box-sizing: border-box;
 }
+
 /* make sure to set some focus styles for accessibility */
 :focus {
   outline: 0;
@@ -132,7 +134,6 @@ blockquote::before,
 blockquote::after,
 q::before,
 q::after {
-  content: '';
   content: none;
 }
 
@@ -224,7 +225,7 @@ a:hover {
 
 img {
   border: 0; /* 1 */
-  -ms-interpolation-mode: bicubic; /* 2 */
+  interpolation-mode: bicubic; /* 2 */
 }
 
 /**
@@ -326,7 +327,7 @@ input[type='submit'] {
   *overflow: visible; /* 4 */
 
   cursor: pointer; /* 3 */
-  appearance: button; /* 2 */
+  //appearance: button; /* 2 */
 }
 
 /**
@@ -361,7 +362,7 @@ input[type='radio'] {
  */
 
 [type='search'] {
-  appearance: textfield; /* 1 */
+  //appearance: textfield; /* 1 */
 
   box-sizing: content-box; /* 2 */
 }

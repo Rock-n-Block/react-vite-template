@@ -37,35 +37,29 @@
 
 @mixin text-common($point, $weight: 400) {
   @if $point==ssm {
-
   }
   @if $point==sm {
-
   }
   @if $point==smd {
-
   }
   @if $point==md {
-
   }
   @if $point==slg {
-
   }
   @if $point==lg {
-
   }
   @if $point==xl {
-
   }
   @if $point==xxl {
-
   }
   font-weight: $weight;
 }
 
 @mixin ellipsis {
-  max-width: 100%;
   overflow: hidden;
-  text-overflow: ellipsis;
+
+  max-width: 100%;
+
   white-space: nowrap;
+  text-overflow: ellipsis;
 }

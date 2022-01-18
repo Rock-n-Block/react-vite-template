@@ -5,52 +5,49 @@ $color-default: black;
 $border-default: gray;
 
 .button {
-  cursor: pointer;
+  box-sizing: border-box;
+  width: fit-content;
+
+  white-space: nowrap;
   text-decoration: none;
+
+  cursor: pointer;
+
   background-color: transparent;
   border: none;
-  width: fit-content;
-  white-space: nowrap;
   @include flex(row, center, center, nowrap);
-  box-sizing: border-box;
 
   &.default {
-    background: $bg-default;
     color: $color-default;
-    border-radius: 18px;
+    background: $bg-default;
     border: 1px solid $border-default;
+    border-radius: 18px;
   }
 
   &.sm {
-
   }
+
   &.md {
-
   }
-  &.lg {
 
+  &.lg {
   }
 
   &.filled {
-
     &:hover,
     &:focus {
-
     }
   }
-  &.outline {
 
+  &.outline {
     &:hover,
     &:focus {
-
     }
   }
 
   &.disabled {
-
     &:hover,
     &:focus {
-
     }
   }
 }

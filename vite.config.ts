@@ -5,7 +5,4 @@ import tsconfigPaths from 'vite-tsconfig-paths';
 
 export default defineConfig({
   plugins: [legacy(), react(), tsconfigPaths()],
-  esbuild: {
-    jsxInject: `import React from 'react'`, // automatically import React in jsx files
-  },
 });

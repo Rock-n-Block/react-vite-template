@@ -33,12 +33,13 @@
     "baseUrl": "./src",
     "experimentalDecorators": true,
     "moduleResolution": "node",
-    "target": "esnext",
+    "target": "es5",
     "types": ["vite/client"],
     "allowJs": true,
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "noEmit": true
+    "noEmit": true,
+    "useDefineForClassFields": true
   }
 }

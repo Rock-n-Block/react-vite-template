@@ -29,6 +29,7 @@ const Connect: FC = observer(({ children }) => {
 
   const disconnect = useCallback(() => {
     // USE THIS: delete localStorage.project_name_logged;
+    delete localStorage.project_name_logged;
     rootStore.user.disconnect();
   }, []);
 
@@ -43,7 +44,7 @@ const Connect: FC = observer(({ children }) => {
               const { address }: any = await provider.getAccount();
               provider.setAccountAddress(address);
               rootStore.user.setAddress(address);
-              localStorage.quack_logged = true;
+              localStorage.project_name_logged = true;
 
               const eventSubs = provider.connectWallet.eventSubscriber().subscribe(
                 (res: any) => {
@@ -82,7 +83,7 @@ const Connect: FC = observer(({ children }) => {
 
   useEffect(() => {
     // USE THIS INSTEAD: if (window.ethereum && localStorage.project_name_logged) {
-    if (window.ethereum) {
+    if (window.ethereum && localStorage.project_name_logged) {
       connect(chainsEnum['Binance-Smart-Chain'], 'MetaMask').then();
     } else {
       provider.connectWallet.initWeb3(chains['Binance-Smart-Chain'].network.rpc);

@@ -5,7 +5,7 @@ import { observer } from 'mobx-react-lite';
 import cn from 'classnames';
 import Dialog from 'rc-dialog';
 
-import { IModalProps } from '@/types';
+import { IModalProps } from 'types';
 
 import s from './Modal.module.scss';
 

@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-import { Header, RouterManager } from '@/containers';
+import { Header, RouterManager } from 'containers';
 
 const App: FC = () => {
   return (

@@ -1,28 +1,43 @@
 {
+  "shouldExtractLiteralValuesFromEnum": true,
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx"
+  ],
+  "exclude": [
+    "node_modules",
+    "**/dist/**/*"
+  ],
   "compilerOptions": {
-    "target": "esnext",
-    "module": "esnext",
-    "lib": ["dom", "dom.iterable", "esnext", "scripthost"],
-    "allowJs": false,
-    "allowSyntheticDefaultImports": true,
-    "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
-    "isolatedModules": true,
-    "jsx": "react-jsx",
-    "moduleResolution": "Node",
-    "noEmit": true,
-    "noFallthroughCasesInSwitch": true,
-    "resolveJsonModule": true,
-    "skipLibCheck": true,
     "strict": true,
+    "noImplicitAny": true,
+    "jsx": "react-jsx",
+    "module": "esnext",
+    "lib": [
+      "dom",
+      "esnext",
+      "ES2015"
+    ],
+    "emitDecoratorMetadata": false,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitReturns": true,
+    "noUnusedLocals": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "pretty": true,
+    "removeComments": false,
+    "stripInternal": true,
     "sourceMap": true,
-    "types": ["vite/client", "node"],
+    "noImplicitThis": false,
     "baseUrl": "./src",
-    "paths": {
-      "@/*": [
-        "./*"
-      ]
-    }
-  },
-  "include": ["./src"]
+    "experimentalDecorators": true,
+    "moduleResolution": "node",
+    "target": "es5",
+    "allowJs": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true
+  }
 }

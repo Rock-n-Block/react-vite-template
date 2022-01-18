@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/extensions
 const prettierConfig = require('./.prettierrc.js');
 
 module.exports = {
@@ -83,6 +84,13 @@ module.exports = {
         condition: 'parens-new-line',
         logical: 'parens-new-line',
         prop: 'ignore',
+      },
+    ],
+    'react/function-component-definition': [
+      2,
+      {
+        namedComponents: 'arrow-function',
+        unnamedComponents: 'arrow-function',
       },
     ],
     'sort-imports': 'off',

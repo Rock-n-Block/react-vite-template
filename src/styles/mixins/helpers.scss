@@ -29,8 +29,43 @@
   gap: $gap;
 }
 
-@mixin text-control($size: 14px, $height: 15px, $weight: normal) {
+@mixin text-control($size: 15px, $height: 18px, $weight: 400) {
   font-size: $size;
   font-weight: $weight;
   line-height: $height;
+}
+
+@mixin text-common($point, $weight: 400) {
+  @if $point==ssm {
+
+  }
+  @if $point==sm {
+
+  }
+  @if $point==smd {
+
+  }
+  @if $point==md {
+
+  }
+  @if $point==slg {
+
+  }
+  @if $point==lg {
+
+  }
+  @if $point==xl {
+
+  }
+  @if $point==xxl {
+
+  }
+  font-weight: $weight;
+}
+
+@mixin ellipsis {
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }

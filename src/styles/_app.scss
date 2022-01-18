@@ -4,10 +4,10 @@
 
 body {
   margin: 0;
-  font-family: 'Inter', sans-serif;
+  font-family: 'SansSerif', sans-serif;
   font-weight: normal;
-  font-size: 14px;
-  line-height: 24px;
+  font-size: $font-size-default;
+  line-height: $line-height-default;
   color: black;
 
   span,

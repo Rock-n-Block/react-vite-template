@@ -6,7 +6,7 @@
 Installs packages
 
 ### `npm run prepare`
-Enalbes pr-commit
+Enables pr-commit
 
 ### `vite`
 Starts dev server

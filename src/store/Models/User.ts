@@ -8,5 +8,8 @@ const User = types
     setAddress: (address: string) => {
       self.address = address;
     },
+    disconnect: () => {
+      self.address = null;
+    },
   }));
 export default User;

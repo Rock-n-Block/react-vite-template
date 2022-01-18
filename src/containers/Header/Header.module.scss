@@ -1,0 +1,38 @@
+@import 'src/styles/variables';
+@import 'src/styles/mixins';
+
+.header_wrapper {
+  padding: 40px 0;
+  @include flex(row, center, space-between, nowrap);
+
+  .logo {
+    max-width: 131px;
+  }
+  .btn {
+    padding: 24px 167px;
+    font-weight: 600;
+    font-size: 20px;
+    letter-spacing: 0.015em;
+    text-transform: uppercase;
+
+    color: $text-btn-color-white;
+  }
+  .btn_connected {
+    padding: 12px 65px 12px 18px;
+    @include flex(row, center, flex-start, wrap);
+    .icon {
+      width: 53px;
+      height: 48px;
+      margin-right: 24px;
+      img {
+        height: 100%;
+      }
+    }
+    .text {
+      font-weight: 500;
+      font-size: 24px;
+      line-height: 29px;
+      text-transform: none;
+    }
+  }
+}

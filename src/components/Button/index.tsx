@@ -7,7 +7,7 @@ import s from './Button.module.scss';
 
 export interface IButton {
   color?: 'default' | 'filled' | 'outline' | 'disabled';
-  size?: 'lg' | 'sm';
+  size?: 'lg' | 'md' | 'sm';
   className?: string;
   onClick?: (event: never) => void;
   type?: 'button' | 'submit';

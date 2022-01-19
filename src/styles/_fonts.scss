@@ -1,2 +1,4 @@
+@import 'mixins/helpers';
 // Example
-//@include font-face('Inter', '../../assets/fonts/Inter-Light', 400, normal, 'ttf');
+@include font-face('Inter', '../assets/fonts/Inter-Light', 400, normal, 'ttf');
+@include font-face('Exodar', '../assets/fonts/Exodar-Outline', 400, normal, 'ttf');

@@ -18,7 +18,7 @@ const Header: FC = observer(() => {
     connect(chainsEnum['Binance-Smart-Chain'], 'MetaMask').catch(() => {});
   }, [connect]);
 
-  // get data without connect
+  // get data before connect
   useEffect(() => {
     walletService
       .callContractMethod({

@@ -1,5 +1,7 @@
 import { NodeGlobalsPolyfillPlugin } from '@esbuild-plugins/node-globals-polyfill';
 import { NodeModulesPolyfillPlugin } from '@esbuild-plugins/node-modules-polyfill';
+// import url from "@rollup/plugin-url";
+import svgr from '@svgr/rollup';
 import react from '@vitejs/plugin-react';
 import path from 'path';
 import rollupNodePolyFill from 'rollup-plugin-node-polyfills';
@@ -12,7 +14,14 @@ export default defineConfig({
     tsconfigPaths({
       root: './',
     }),
+    // url(),
+    svgr(),
   ],
+  input: 'src/main.js',
+  output: {
+    file: 'bundle.js',
+    format: 'cjs',
+  },
   build: {
     rollupOptions: {
       plugins: [rollupNodePolyFill()],

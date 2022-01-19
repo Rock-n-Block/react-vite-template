@@ -1,17 +1,19 @@
 import { FC, useCallback, useEffect } from 'react';
 
 import { observer } from 'mobx-react-lite';
+import { useMst } from 'store';
 
 import { Button } from 'components';
+import { contracts } from 'config';
 
 import { useWalletConnectorContext } from 'services';
-import { contracts } from 'config';
 import { chainsEnum } from 'types';
 
 import s from './Header.module.scss';
 
 const Header: FC = observer(() => {
   const { connect, walletService } = useWalletConnectorContext();
+  const { user } = useMst();
   const connectToWallet = useCallback(() => {
     connect(chainsEnum['Binance-Smart-Chain'], 'MetaMask').catch(() => {});
   }, [connect]);
@@ -32,11 +34,11 @@ const Header: FC = observer(() => {
       .catch((err) => {
         console.log('err', err);
       });
-  }, []);
+  }, [walletService]);
 
   return (
     <div className={s.header_wrapper}>
-      <Button onClick={connectToWallet}>Connect Wallet</Button>
+      {!user.address ? <Button onClick={connectToWallet}>Connect Wallet</Button> : user.address}
     </div>
   );
 });

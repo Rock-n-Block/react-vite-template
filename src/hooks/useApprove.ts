@@ -1,7 +1,8 @@
 import React from 'react';
 
-import { useWalletConnectorContext } from 'services';
 import { contracts } from 'config';
+
+import { useWalletConnectorContext } from 'services';
 import { TNullable } from 'types';
 
 const useApprove = ({

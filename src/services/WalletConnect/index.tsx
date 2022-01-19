@@ -1,7 +1,7 @@
-import { createContext, FC, useCallback, useContext, useEffect, useRef, useMemo } from 'react';
+import { createContext, FC, useCallback, useContext, useEffect, useMemo, useRef } from 'react';
 
 import { observer } from 'mobx-react-lite';
-import rootStore from 'store';
+import { rootStore } from 'store';
 
 import { chains } from 'config';
 

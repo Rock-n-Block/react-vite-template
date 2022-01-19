@@ -1,6 +1,7 @@
 import { INetwork } from '@amfi/connect-wallet/dist/interface';
 
 import { chainsEnum, IConnectWallet, IContracts } from 'types';
+
 import { stakingAbi } from './abi';
 
 export const is_production = false;

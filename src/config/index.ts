@@ -1,6 +1,7 @@
 import { INetwork } from '@amfi/connect-wallet/dist/interface';
 
 import { chainsEnum, IConnectWallet, IContracts } from 'types';
+import { stakingAbi } from './abi';
 
 export const is_production = false;
 
@@ -48,7 +49,18 @@ export const connectWallet = (chainName: chainsEnum): IConnectWallet => {
 };
 
 export const contracts: IContracts = {
-  type: import.meta.env.VITE_CONTRACT,
-  names: ['STAKING', 'QUACK', 'VOTING'],
-  params: {},
+  type: is_production ? 'mainnet' : 'testnet',
+  names: ['STAKING'],
+  params: {
+    STAKING: {
+      mainnet: {
+        address: '0xfab0fd2586e287746aaec8397109b5fe6d2ff053',
+        abi: stakingAbi,
+      },
+      testnet: {
+        address: '0x3bEeA65fdf4C0C51055675800B142045Ed4c76A2',
+        abi: stakingAbi,
+      },
+    },
+  },
 };

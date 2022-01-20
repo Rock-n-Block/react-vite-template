@@ -1,5 +1,5 @@
 import { ConnectWallet } from '@amfi/connect-wallet';
-import { IConnect, IError } from '@amfi/connect-wallet/dist/interface';
+import { IConnect, IError, IConnectorMessage } from '@amfi/connect-wallet/dist/interface';
 import BigNumber from 'bignumber.js/bignumber';
 import Web3 from 'web3';
 import { AbiItem } from 'web3-utils';
@@ -34,23 +34,16 @@ export class WalletService {
   public async initWalletConnect(
     chainName: chainsEnum,
     providerName: 'MetaMask' | 'WalletConnect', // ADD PROVIDERS HERE
-  ): Promise<boolean> {
+  ): Promise<IConnectorMessage> {
     return new Promise((resolve) => {
       const { provider, network, settings } = connectWalletConfig(chainName);
 
-      const connecting = this.connectWallet
+      this.connectWallet
         .connect(provider[providerName], network, settings)
-        .then((connected: boolean | {}) => {
+        .then((connected: IConnectorMessage) => {
           this.currentChain = chainName;
-          return connected;
-        })
-        .catch((err: any) => {
-          console.error('initWalletConnect providerWallet err: ', err);
+          resolve(connected);
         });
-
-      Promise.all([connecting]).then((connect: any) => {
-        resolve(connect[0]);
-      });
     });
   }
 

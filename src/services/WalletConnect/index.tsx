@@ -44,7 +44,7 @@ const Connect: FC = observer(({ children }) => {
             providerName as any,
           );
 
-          if (isConnected) {
+          if (isConnected.connected) {
             try {
               const { address }: any = await provider.current.getAccount();
               provider.current.setAccountAddress(address);

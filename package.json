@@ -30,7 +30,7 @@
     ]
   },
   "dependencies": {
-    "@amfi/connect-wallet": "^1.1.21",
+    "@amfi/connect-wallet": "^1.1.22",
     "axios": "^0.24.0",
     "bignumber.js": "^9.0.2",
     "classnames": "^2.3.1",

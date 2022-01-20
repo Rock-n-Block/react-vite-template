@@ -5,7 +5,7 @@ import { TNullable } from 'types';
 
 export default (
   userAddress: TNullable<string>,
-  tokenAddress: string,
+  tokenAddress?: string,
   isIntervalUpdate = false,
 ): [string, string] => {
   const [balance, setBalance] = useState<string>('');
@@ -14,15 +14,23 @@ export default (
   const { walletService } = useWalletConnectorContext();
 
   const getUserTokenBalance = useCallback(async () => {
-    const tokenBalance = await walletService.getTokenBalance(tokenAddress);
-    const amount = await walletService.weiToEth(tokenAddress, tokenBalance);
+    let method: 'getTokenBalance' | 'getBalance' = 'getTokenBalance';
+    if (!tokenAddress) {
+      method = 'getBalance';
+    }
+    const tokenBalance = await walletService[method](tokenAddress || '');
+    const amount = await walletService.weiToEth(tokenBalance, tokenAddress);
 
     setBalance(amount);
   }, [tokenAddress, walletService]);
 
   const getTokenDecimals = useCallback(async () => {
-    const tokenDecimals = await walletService.getTokenDecimals(tokenAddress);
-    setDecimals(tokenDecimals);
+    if (tokenAddress) {
+      const tokenDecimals = await walletService.getTokenDecimals(tokenAddress);
+      setDecimals(tokenDecimals);
+    } else {
+      setDecimals('18');
+    }
   }, [tokenAddress, walletService]);
 
   useEffect(() => {

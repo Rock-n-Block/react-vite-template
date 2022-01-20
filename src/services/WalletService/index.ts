@@ -64,6 +64,10 @@ export class WalletService {
     return contract.methods.balanceOf(this.walletAddress).call();
   }
 
+  public getBalance(address: string): Promise<string | number> {
+    return this.connectWallet.getBalance(address);
+  }
+
   public getTokenDecimals(address: string): Promise<string> {
     const contract = this.connectWallet.getContract({
       address,
@@ -235,11 +239,11 @@ export class WalletService {
     return new BigNumber(amount).times(new BigNumber(10).pow(tokenDecimals)).toString(10);
   }
 
-  public async weiToEth(tokenContract: string, amount: number | string): Promise<string> {
+  public async weiToEth(amount: number | string, tokenAddress?: string): Promise<string> {
     if (amount === '0') {
       return amount;
     }
-    const tokenDecimals = await this.getTokenDecimals(tokenContract);
+    const tokenDecimals = tokenAddress ? await this.getTokenDecimals(tokenAddress) : 18;
     return new BigNumber(amount).dividedBy(new BigNumber(10).pow(tokenDecimals)).toString(10);
   }
 

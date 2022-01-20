@@ -1,6 +1,6 @@
 import { NodeGlobalsPolyfillPlugin } from '@esbuild-plugins/node-globals-polyfill';
 import { NodeModulesPolyfillPlugin } from '@esbuild-plugins/node-modules-polyfill';
-// import url from "@rollup/plugin-url";
+import url from '@rollup/plugin-url';
 import svgr from '@svgr/rollup';
 import react from '@vitejs/plugin-react';
 import path from 'path';
@@ -14,7 +14,7 @@ export default defineConfig({
     tsconfigPaths({
       root: './',
     }),
-    // url(),
+    url(),
     svgr(),
   ],
   input: 'src/main.js',

@@ -8,6 +8,7 @@ interface ImportMetaEnv {
   readonly VITE_RPC: string;
   readonly VITE_EXPLORER: string;
   readonly VITE_CONTRACT: 'mainnet' | 'testnet';
+  readonly VITE_TEST: string;
 }
 
 interface ImportMeta {

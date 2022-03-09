@@ -30,6 +30,9 @@ export default defineConfig({
       transformMixedEsModules: true,
     },
   },
+  server: {
+    host: true,
+  },
   optimizeDeps: {
     esbuildOptions: {
       define: {

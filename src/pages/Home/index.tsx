@@ -1,7 +1,8 @@
 import { FC } from 'react';
 
-import uLogo, { ReactComponent as Logo } from 'assets/img/icons/logo.svg';
+import { ReactComponent as Logo } from 'assets/img/icons/logo.svg';
 
+import { Button } from 'components';
 import s from './Home.module.scss';
 
 const Home: FC = () => {
@@ -9,7 +10,7 @@ const Home: FC = () => {
     <div className={s.home_wrapper}>
       <div className={s.title}>Hello RnB</div>
       <Logo />
-      <img src={uLogo} alt="star" />
+      <Button>Connect</Button>
     </div>
   );
 };

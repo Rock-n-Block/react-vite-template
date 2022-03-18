@@ -1,14 +1,19 @@
 module.exports = {
-  extends: ['airbnb-typescript', 'plugin:jest/recommended'],
+  extends: ["airbnb-typescript", "plugin:jest/recommended", "plugin:storybook/recommended"],
   parser: '@typescript-eslint/parser',
   parserOptions: {
-    project: './tsconfig.json',
+    project: './tsconfig.json'
   },
   rules: {
     'react/jsx-one-expression-per-line': 0,
     'react/prop-types': 0,
     'react/require-default-props': 0,
-    'operator-linebreak': ['error', 'after', { overrides: { '?': 'ignore', ':': 'ignore' } }],
+    'operator-linebreak': ['error', 'after', {
+      overrides: {
+        '?': 'ignore',
+        ':': 'ignore'
+      }
+    }],
     'linebreak-style': 0,
     'react/prefer-stateless-function': 0,
     'react/jsx-filename-extension': 0,
@@ -19,6 +24,7 @@ module.exports = {
     'jsx-a11y/no-static-element-interactions': 0,
     'import/no-extraneous-dependencies': 0,
     'react/static-property-placement': 0,
+    'react/no-unused-prop-types': 0,
     'import/no-named-as-default-member': 0,
     'import/no-cycle': 0,
     'import/no-named-as-default': 0,
@@ -36,27 +42,25 @@ module.exports = {
     'arrow-body-style': 0,
     'object-curly-newline': 0,
     'implicit-arrow-linebreak': 1,
-    'max-len': 1,
+    'max-len': 1
   },
-  overrides: [
-    {
-      files: ['src/store/**'],
-      rules: {
-        'import/prefer-default-export': 0,
-      },
-    },
-  ],
+  overrides: [{
+    files: ['src/store/**'],
+    rules: {
+      'import/prefer-default-export': 0
+    }
+  }],
   ignorePatterns: '*.js',
   env: {
     browser: true,
-    jest: true,
+    jest: true
   },
   settings: {
     'import/resolver': {
       node: {
-        paths: ['src'],
-      },
-    },
+        paths: ['src']
+      }
+    }
   },
-  plugins: ['react', 'import', 'react-hooks', 'jest', '@typescript-eslint'],
+  plugins: ['react', 'import', 'react-hooks', 'jest', '@typescript-eslint']
 };

@@ -1,6 +1,6 @@
-import React, { FC } from 'react';
+import { FC } from 'react';
 import clsx from 'clsx';
-import classes from './Toastify.module.scss';
+import s from './styles.module.scss';
 
 export type ToastifyProps = {
   type: 'success' | 'info' | 'warning' | 'error';
@@ -10,12 +10,9 @@ export type ToastifyProps = {
 
 export const Toastify: FC<ToastifyProps> = ({ type, message, className }) => {
   return (
-    <div className={clsx(classes.toastify, classes[type], className)}>
-      {/* <div className={classes.icon}>{toastifyHelper[type]}</div> */}
-      <div className={classes[`text${type}`]}>{message}</div>
-      <div className={clsx(classes.closeBtnContainer, classes[`icon${type}`])}>
-        <span>closeIcon</span>
-      </div>
+    <div className={clsx(s.toastify, s[type], className)}>
+      <div className={s[`${type}Text`]}>{message}</div>
+      <div className={clsx(s.closeBtnContainer, s[`icon${type}`])}>{/* <span>closeIcon</span> */}</div>
     </div>
   );
 };

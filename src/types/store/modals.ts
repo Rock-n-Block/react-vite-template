@@ -5,10 +5,7 @@ export enum Modals {
   SendPending = 'SendPending',
   SendRejected = 'SendRejected',
   SendSuccess = 'SendSuccess',
-  BidSuccess = 'BidSuccess',
-  CreatedLotSuccess = 'CreatedLotSuccess',
-  CreatedLotError = 'CreatedLotError',
-  none = '',
+  init = '',
 }
 
 export interface ModalState {

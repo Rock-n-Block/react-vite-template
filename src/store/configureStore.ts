@@ -23,12 +23,11 @@ const reducers = {
 const store = configureStore({
   reducer: reducers,
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  middleware: (getDefaultMiddleware: any) =>
-    getDefaultMiddleware({
-      serializableCheck: {
-        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER, userActionTypes.GET_TOKEN_BALANCE, userActionTypes.LOGIN, userActionTypes.UPDATE_USER_INFO],
-      },
-    }).concat(sagaMiddleware),
+  middleware: (getDefaultMiddleware: any) => getDefaultMiddleware({
+    serializableCheck: {
+      ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER, userActionTypes.GET_TOKEN_BALANCE, userActionTypes.UPDATE_USER_INFO],
+    },
+  }).concat(sagaMiddleware),
 });
 
 sagaMiddleware.run(rootSaga);

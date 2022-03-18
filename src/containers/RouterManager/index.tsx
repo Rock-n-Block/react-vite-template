@@ -1,11 +1,13 @@
+import { routes } from 'appConstants/routes';
+import { Home } from 'pages';
 import { FC } from 'react';
-import { Route, Routes } from 'react-router-dom';
-
-import { routes } from 'router';
+import { Navigate, Route, Routes } from 'react-router-dom';
 
 export const RouteManager: FC = () => {
-  const router = routes.map((route) => {
-    return <Route path={route.path} element={route.component} key={route.name} />;
-  });
-  return <Routes>{router}</Routes>;
+  return (
+    <Routes>
+      <Route path="*" element={<Navigate to="/" />} />
+      <Route path={routes.root} element={<Home />} />
+    </Routes>
+  );
 };

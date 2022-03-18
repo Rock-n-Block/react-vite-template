@@ -25,9 +25,7 @@ export const chains: {
         provider: {
           rpc: {
             rpc: {
-              [isMainnet ? 56 : 97]: isMainnet
-                ? 'https://bsc-dataseed.binance.org/'
-                : 'https://data-seed-prebsc-1-s1.binance.org:8545/',
+              [isMainnet ? 56 : 97]: isMainnet ? 'https://bsc-dataseed.binance.org/' : 'https://data-seed-prebsc-1-s1.binance.org:8545/',
             },
             chainId: isMainnet ? 56 : 97,
           },

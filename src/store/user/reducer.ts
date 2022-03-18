@@ -3,13 +3,10 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { UserState } from 'types';
 
 const initialState: UserState = {
-  id: null,
-  avatar: '',
   address: '',
   balance: 0,
   key: '',
   provider: '',
-  displayName: '',
 };
 
 export const userReducer = createSlice({

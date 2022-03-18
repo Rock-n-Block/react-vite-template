@@ -4,7 +4,7 @@ import { Modals, ModalsInitialState, ModalState } from 'types';
 
 const initialState: ModalsInitialState = {
   modalState: {
-    activeModal: Modals.none,
+    activeModal: Modals.init,
     txHash: '',
     open: false,
   },
@@ -25,7 +25,7 @@ export const modalsReducer = createSlice({
     closeModal: (state) => ({
       ...state,
       modalState: {
-        activeModal: Modals.none,
+        activeModal: Modals.init,
         txHash: '',
         open: false,
       },

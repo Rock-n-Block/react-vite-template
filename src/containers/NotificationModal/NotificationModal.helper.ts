@@ -19,27 +19,6 @@ export const modalData = {
       'BEP-20 tokens are deployed with functionality that allows other smart contracts to move tokens. By approving the smart contracts, it now has permission to execute the peer to peer swapping behavior on your behalf. The Spend Limit permission is the total amount of tokens that are able to move when using MetaMask Swap.',
   },
 
-  [Modals.BidSuccess]: {
-    title1: 'STEP 2/2',
-    title2: 'Bid',
-    icon: '',
-    title3: 'You successfuly placed a bid.',
-  },
-
-  [Modals.CreatedLotSuccess]: {
-    title1: 'STEP 2/2',
-    title2: 'Create lot',
-    icon: '',
-    title3: 'You successfuly created a lot.',
-  },
-
-  [Modals.CreatedLotSuccess]: {
-    title1: 'STEP 2/2',
-    title2: 'Create lot',
-    icon: '',
-    title3: 'You successfuly created a lot.',
-  },
-
   [Modals.SendPending]: {
     title1: 'STEP 2/2',
     title2: 'SEND',

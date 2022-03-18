@@ -14,7 +14,7 @@ export interface HeaderProps {
 }
 
 export const Header: VFC<HeaderProps> = ({ address, disconnect, onConnectWallet, isHomePage, isUserInfoLoading }) => {
-  console.log(isHomePage, isUserInfoLoading);
+  console.debug(isHomePage, isUserInfoLoading);
 
   return (
     <header className={s.header}>

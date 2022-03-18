@@ -7,7 +7,7 @@ import { validateStatus } from '../../utils/validateStatus';
 import userSelector from '../user/selectors';
 
 const client: AxiosInstance = axios.create({
-  baseURL: '', // TODO change for current
+  baseURL: import.meta.env.VITE_API_URL,
   validateStatus,
 });
 

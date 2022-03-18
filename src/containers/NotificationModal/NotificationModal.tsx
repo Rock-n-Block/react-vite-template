@@ -27,7 +27,7 @@ export const NotificationModal: VFC<NotificationModalProps> = ({ className, ...p
   const closeModal = useCallback(() => {
     dispatch(
       setActiveModal({
-        activeModal: Modals.none,
+        activeModal: Modals.init,
         txHash: '',
         open: false,
       }),

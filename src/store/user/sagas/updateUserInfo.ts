@@ -16,9 +16,9 @@ export function* updateUserInfoSaga({ type, payload: { web3Provider } }: ReturnT
   try {
     const { data } = yield call(baseApi.getSelfInfo);
     yield put(getTokenBalance({ web3Provider }));
-    const { avatar, id, displayName }: Partial<UserState> = camelize(data);
+    const { address }: Partial<UserState> = camelize(data);
 
-    yield put(updateUserState({ avatar, id, displayName }));
+    yield put(updateUserState({ address }));
 
     yield put(apiActions.success(type));
   } catch (err) {

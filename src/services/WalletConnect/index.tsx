@@ -1,10 +1,9 @@
-/* eslint-disable react/jsx-no-constructed-context-values */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { createContext, FC, useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import { toast } from 'react-toastify';
 
 import { useDispatch } from 'react-redux';
-import { login, updateUserInfo } from 'store/user/actions';
+import { updateUserInfo } from 'store/user/actions';
 import { disconnectWalletState, updateUserState } from 'store/user/reducer';
 import userSelector from 'store/user/selectors';
 
@@ -14,12 +13,6 @@ import { useShallowSelector } from 'hooks';
 import { Chains, State, UserState, WalletProviders } from 'types';
 
 import { WalletService } from '../walletService';
-
-declare global {
-  interface Window {
-    ethereum: unknown;
-  }
-}
 
 interface IContextValue {
   connect: (provider: WalletProviders, chain: Chains) => Promise<void>;
@@ -33,20 +26,25 @@ const WalletConnectContext: FC = ({ children }) => {
   const [currentSubsriber, setCurrentSubsciber] = useState<Subscription>();
   const WalletConnect = useMemo(() => new WalletService(), []);
   const dispatch = useDispatch();
-  const {
-    address,
-    key,
-    provider: WalletProvider,
-  } = useShallowSelector<State, UserState>(userSelector.getUser);
+  const { address, key, provider: WalletProvider } = useShallowSelector<State, UserState>(userSelector.getUser);
+
+  const disconnect = useCallback(() => {
+    dispatch(disconnectWalletState());
+    WalletConnect.resetConnect();
+    currentSubsriber?.unsubscribe();
+  }, [WalletConnect, currentSubsriber, dispatch]);
 
   const subscriberSuccess = useCallback(
     (data: any) => {
+      if (document.visibilityState !== 'visible') {
+        disconnect();
+        return;
+      }
       if (data.name === 'accountsChanged') {
-        dispatch(login({ address: data.address, web3Provider: WalletConnect.Web3() }));
         toast.info('Please sign login message at MetaMask');
       }
     },
-    [WalletConnect, dispatch],
+    [WalletConnect, disconnect, dispatch],
   );
 
   const subscriberError = useCallback(
@@ -75,7 +73,6 @@ const WalletConnectContext: FC = ({ children }) => {
           }
 
           if (accountInfo.address) {
-            dispatch(login({ address: accountInfo.address, web3Provider: WalletConnect.Web3() }));
             dispatch(updateUserState({ provider: accountInfo.type }));
           }
 
@@ -85,23 +82,13 @@ const WalletConnectContext: FC = ({ children }) => {
           // metamask doesn't installed,
           // redirect to download MM or open MM on mobile
           if (error.code === 4) {
-            window.open(
-              `https://metamask.app.link/dapp/${
-                window.location.hostname + window.location.pathname
-              }/?utm_source=mm`,
-            );
+            window.open(`https://metamask.app.link/dapp/${window.location.hostname + window.location.pathname}/?utm_source=mm`);
           }
         }
       }
     },
     [WalletConnect, address, dispatch, key?.length, subscriberError, subscriberSuccess],
   );
-
-  const disconnect = useCallback(() => {
-    dispatch(disconnectWalletState());
-    WalletConnect.resetConnect();
-    currentSubsriber?.unsubscribe();
-  }, [WalletConnect, currentSubsriber, dispatch]);
 
   useEffect(() => {
     // connect user if he connected previously
@@ -110,11 +97,7 @@ const WalletConnectContext: FC = ({ children }) => {
     }
   }, [WalletProvider, connect]);
 
-  return (
-    <Web3Context.Provider value={{ connect, disconnect, walletService: WalletConnect }}>
-      {children}
-    </Web3Context.Provider>
-  );
+  return <Web3Context.Provider value={{ connect, disconnect, walletService: WalletConnect }}>{children}</Web3Context.Provider>;
 };
 
 const useWalletConnectorContext = () => useContext(Web3Context);

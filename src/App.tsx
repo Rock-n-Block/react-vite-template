@@ -2,18 +2,16 @@ import { FC } from 'react';
 
 import { Header, RouterManager } from 'containers';
 
-import WalletConnect from './services/WalletConnect';
+import { WalletConnectContext } from 'services/walletConnect';
+
+import 'react-toastify/dist/ReactToastify.css';
 
 const App: FC = () => {
   return (
-    <WalletConnect>
-      <div className="main_wrapper">
-        <div className="page_wrapper">
-          <Header />
-          <RouterManager />
-        </div>
-      </div>
-    </WalletConnect>
+    <WalletConnectContext>
+      <Header />
+      <RouterManager />
+    </WalletConnectContext>
   );
 };
 export default App;

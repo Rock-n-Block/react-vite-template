@@ -1,3 +1,6 @@
+/* eslint-disable no-shadow */
+/* eslint-disable @typescript-eslint/naming-convention */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { INetwork, IProvider, ISettings } from '@amfi/connect-wallet/dist/interface';
 
 export enum chainsEnum {
@@ -5,8 +8,11 @@ export enum chainsEnum {
   Ethereum = 'Ethereum',
 }
 
+export enum Chains {
+  bsc = 'Binance-Smart-Chain',
+}
+
 export interface IConnectWallet {
-  wallets: string[];
   network: INetwork;
   provider: {
     [index: string]: IProvider;
@@ -29,16 +35,20 @@ export interface IChainConfig {
 }
 
 export interface IContracts {
+  decimals: number;
   names: string[];
-  type: 'mainnet' | 'testnet';
-  params: {
+  contracts: {
     [index: string]: {
-      mainnet: {
-        address: string;
+      testnet?: {
+        address?: {
+          [key in Chains]: string;
+        };
         abi: any[];
       };
-      testnet: {
-        address: string;
+      mainnet?: {
+        address?: {
+          [key in Chains]: string;
+        };
         abi: any[];
       };
     };

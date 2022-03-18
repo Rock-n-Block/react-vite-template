@@ -4,6 +4,7 @@ import { ProfileState } from './profile';
 import { UserState } from './user';
 
 export * from './user';
+export * from './ui';
 export * from './modals';
 export * from './profile';
 

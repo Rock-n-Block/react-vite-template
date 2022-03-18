@@ -1,2 +1,2 @@
 export * from './Button';
-export * from './Button.module.scss';
+export * from './styles.module.scss';

@@ -1,9 +1,9 @@
 import { CSSProperties, FC, PropsWithChildren, RefObject, SyntheticEvent } from 'react';
 import { Link } from 'react-router-dom';
 
-import cn from 'classnames';
+import cn from 'clsx';
 
-import s from './Button.module.scss';
+import s from './styles.module.scss';
 
 export interface ButtonProps {
   color?: 'default' | 'filled' | 'outline' | 'disabled';

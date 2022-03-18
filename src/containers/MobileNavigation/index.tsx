@@ -1,2 +1,2 @@
-export * from './Header';
+export * from './MobileNavigation';
 export * from './styles.module.scss';

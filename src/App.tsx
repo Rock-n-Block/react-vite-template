@@ -1,6 +1,7 @@
 import { FC } from 'react';
 
-import { Header, RouterManager } from 'containers';
+import { Layout, RouteManager as Router } from 'containers';
+import { ToastContainer } from 'react-toastify';
 
 import { WalletConnectContext } from 'services/walletConnect';
 
@@ -9,8 +10,10 @@ import 'react-toastify/dist/ReactToastify.css';
 const App: FC = () => {
   return (
     <WalletConnectContext>
-      <Header />
-      <RouterManager />
+      <ToastContainer autoClose={4000} hideProgressBar position="top-right" closeButton={false} />
+      <Layout>
+        <Router />
+      </Layout>
     </WalletConnectContext>
   );
 };

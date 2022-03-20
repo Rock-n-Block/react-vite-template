@@ -3,7 +3,6 @@ import { createContext, FC, useCallback, useContext, useEffect, useMemo, useStat
 import { toast } from 'react-toastify';
 
 import { useDispatch } from 'react-redux';
-import { updateUserInfo } from 'store/user/actions';
 import { disconnectWalletState, updateUserState } from 'store/user/reducer';
 import userSelector from 'store/user/selectors';
 
@@ -26,7 +25,7 @@ const WalletConnectContext: FC = ({ children }) => {
   const [currentSubsriber, setCurrentSubsciber] = useState<Subscription>();
   const WalletConnect = useMemo(() => new WalletService(), []);
   const dispatch = useDispatch();
-  const { address, key, provider: WalletProvider } = useShallowSelector<State, UserState>(userSelector.getUser);
+  const { address, provider: WalletProvider } = useShallowSelector<State, UserState>(userSelector.getUser);
 
   const disconnect = useCallback(() => {
     dispatch(disconnectWalletState());
@@ -34,18 +33,11 @@ const WalletConnectContext: FC = ({ children }) => {
     currentSubsriber?.unsubscribe();
   }, [WalletConnect, currentSubsriber, dispatch]);
 
-  const subscriberSuccess = useCallback(
-    (data: any) => {
-      if (document.visibilityState !== 'visible') {
-        disconnect();
-        return;
-      }
-      if (data.name === 'accountsChanged') {
-        toast.info('Please sign login message at MetaMask');
-      }
-    },
-    [WalletConnect, disconnect, dispatch],
-  );
+  const subscriberSuccess = useCallback(() => {
+    if (document.visibilityState !== 'visible') {
+      disconnect();
+    }
+  }, [disconnect]);
 
   const subscriberError = useCallback(
     (err: any) => {
@@ -64,16 +56,12 @@ const WalletConnectContext: FC = ({ children }) => {
       const connected = await WalletConnect.initWalletConnect(provider, chain);
       if (connected) {
         try {
-          // ContractService.resetWeb3(WalletConnect.Web3());
           const sub = WalletConnect.eventSubscribe().subscribe(subscriberSuccess, subscriberError);
           const accountInfo: any = await WalletConnect.getAccount();
-          if (key?.length && address === accountInfo?.address) {
-            dispatch(updateUserInfo({ web3Provider: WalletConnect.Web3() }));
-            return;
-          }
 
           if (accountInfo.address) {
-            dispatch(updateUserState({ provider: accountInfo.type }));
+            dispatch(updateUserState({ provider: accountInfo.type, address: accountInfo.address }));
+            toast.success(`Wallet connected: ${accountInfo.address.slice(0, 5)}...${accountInfo.address.slice(-5)}`);
           }
 
           setCurrentSubsciber(sub);
@@ -87,15 +75,15 @@ const WalletConnectContext: FC = ({ children }) => {
         }
       }
     },
-    [WalletConnect, address, dispatch, key?.length, subscriberError, subscriberSuccess],
+    [WalletConnect, dispatch, subscriberError, subscriberSuccess],
   );
 
   useEffect(() => {
     // connect user if he connected previously
-    if (WalletProvider) {
+    if (WalletProvider && !address.length) {
       connect(WalletProviders.metamask, Chains.bsc);
     }
-  }, [WalletProvider, connect]);
+  }, [WalletProvider, address.length, connect]);
 
   return <Web3Context.Provider value={{ connect, disconnect, walletService: WalletConnect }}>{children}</Web3Context.Provider>;
 };

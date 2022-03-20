@@ -1,5 +1,5 @@
 import { Button } from 'components';
-import { VFC } from 'react';
+import { useCallback, VFC } from 'react';
 import { Chains, WalletProviders } from 'types';
 
 import s from './styles.module.scss';
@@ -16,12 +16,18 @@ export interface HeaderProps {
 export const Header: VFC<HeaderProps> = ({ address, disconnect, onConnectWallet, isHomePage, isUserInfoLoading }) => {
   console.debug(isHomePage, isUserInfoLoading);
 
+  const handleChangeConnecting = useCallback(() => {
+    if (!address.length) {
+      onConnectWallet(WalletProviders.metamask, Chains.bsc);
+    } else {
+      disconnect();
+    }
+  }, [address.length, disconnect, onConnectWallet]);
+
   return (
     <header className={s.header}>
-      {!!address.length && <span>{address}</span>}
       <div>
-        <Button onClick={() => onConnectWallet(WalletProviders.metamask, Chains.bsc)}>Connect Wallet</Button>
-        <Button onClick={disconnect}>Disconnect Wallet</Button>
+        <Button onClick={handleChangeConnecting}>{address.length ? address : 'Connect Wallet'}</Button>
       </div>
     </header>
   );

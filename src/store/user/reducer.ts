@@ -5,7 +5,6 @@ import { UserState } from 'types';
 const initialState: UserState = {
   address: '',
   balance: 0,
-  key: '',
   provider: '',
 };
 

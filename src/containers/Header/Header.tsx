@@ -9,11 +9,13 @@ export interface HeaderProps {
   disconnect: () => void;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   onConnectWallet: (provider: any, newChain: any) => void;
+  onToggleChainType: () => void;
   isHomePage: boolean;
   isUserInfoLoading: boolean;
+  chainType: 'testnet' | 'mainnet';
 }
 
-export const Header: VFC<HeaderProps> = ({ address, disconnect, onConnectWallet, isHomePage, isUserInfoLoading }) => {
+export const Header: VFC<HeaderProps> = ({ address, disconnect, onConnectWallet, onToggleChainType, isHomePage, isUserInfoLoading, chainType }) => {
   console.debug(isHomePage, isUserInfoLoading);
 
   const handleChangeConnecting = useCallback(() => {
@@ -26,9 +28,8 @@ export const Header: VFC<HeaderProps> = ({ address, disconnect, onConnectWallet,
 
   return (
     <header className={s.header}>
-      <div>
-        <Button onClick={handleChangeConnecting}>{address.length ? address : 'Connect Wallet'}</Button>
-      </div>
+      <Button onClick={handleChangeConnecting}>{address.length ? address : 'Connect Wallet'}</Button>
+      <Button onClick={() => onToggleChainType()}>{chainType}</Button>
     </header>
   );
 };

@@ -47,6 +47,7 @@ module.exports = {
     'object-curly-newline': 0,
     'implicit-arrow-linebreak': 1,
     'max-len': 0,
+    'no-shadow': 0,
   },
   overrides: [
     {

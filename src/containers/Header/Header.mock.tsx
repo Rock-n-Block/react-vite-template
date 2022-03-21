@@ -7,4 +7,6 @@ export const headerPropsMocked: HeaderProps = {
   onConnectWallet: () => {},
   isHomePage: true,
   isUserInfoLoading: false,
+  onToggleChainType: () => {},
+  chainType: 'testnet',
 };

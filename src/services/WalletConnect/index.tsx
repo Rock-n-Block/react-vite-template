@@ -25,7 +25,7 @@ const WalletConnectContext: FC = ({ children }) => {
   const [currentSubsriber, setCurrentSubsciber] = useState<Subscription>();
   const WalletConnect = useMemo(() => new WalletService(), []);
   const dispatch = useDispatch();
-  const { address, provider: WalletProvider } = useShallowSelector<State, UserState>(userSelector.getUser);
+  const { address, provider: WalletProvider, chainType } = useShallowSelector<State, UserState>(userSelector.getUser);
 
   const disconnect = useCallback(() => {
     dispatch(disconnectWalletState());
@@ -53,7 +53,7 @@ const WalletConnectContext: FC = ({ children }) => {
 
   const connect = useCallback(
     async (provider: WalletProviders, chain: Chains) => {
-      const connected = await WalletConnect.initWalletConnect(provider, chain);
+      const connected = await WalletConnect.initWalletConnect(provider, chain, chainType);
       if (connected) {
         try {
           const sub = WalletConnect.eventSubscribe().subscribe(subscriberSuccess, subscriberError);
@@ -75,7 +75,7 @@ const WalletConnectContext: FC = ({ children }) => {
         }
       }
     },
-    [WalletConnect, dispatch, subscriberError, subscriberSuccess],
+    [WalletConnect, chainType, dispatch, subscriberError, subscriberSuccess],
   );
 
   useEffect(() => {

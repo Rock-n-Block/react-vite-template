@@ -1,33 +1,51 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { Chains, IConnectWallet, IContracts } from 'types';
+import { Chains, IChainType, IConnectWallet, IContracts } from 'types';
 
 import { erc20Abi } from './abi';
-import { isMainnet } from './constants';
 
 export const chains: {
   [key: string]: {
-    name: string;
-    chainId: number;
-    provider: {
-      [key: string]: any;
+    [key: string]: {
+      name: string;
+      chainId: number;
+      provider: {
+        [key: string]: any;
+      };
+      img?: any;
     };
-    img?: any;
   };
 } = {
   'Binance-Smart-Chain': {
-    name: 'Binance-Smart-Chain',
-    chainId: isMainnet ? 56 : 97,
-    provider: {
-      MetaMask: { name: 'MetaMask' },
-      WalletConnect: {
-        name: 'WalletConnect',
-        useProvider: 'rpc',
-        provider: {
-          rpc: {
+    mainnet: {
+      name: 'Binance-Smart-Chain',
+      chainId: 56,
+      provider: {
+        MetaMask: { name: 'MetaMask' },
+        WalletConnect: {
+          name: 'WalletConnect',
+          useProvider: 'rpc',
+          provider: {
             rpc: {
-              [isMainnet ? 56 : 97]: isMainnet ? 'https://bsc-dataseed.binance.org/' : 'https://data-seed-prebsc-1-s1.binance.org:8545/',
+              56: 'https://bsc-dataseed.binance.org/',
+              chainId: 56,
             },
-            chainId: isMainnet ? 56 : 97,
+          },
+        },
+      },
+    },
+    testnet: {
+      name: 'Binance-Smart-Chain',
+      chainId: 97,
+      provider: {
+        MetaMask: { name: 'MetaMask' },
+        WalletConnect: {
+          name: 'WalletConnect',
+          useProvider: 'rpc',
+          provider: {
+            rpc: {
+              97: 'https://data-seed-prebsc-1-s1.binance.org:8545/',
+              chainId: 97,
+            },
           },
         },
       },
@@ -35,8 +53,8 @@ export const chains: {
   },
 };
 
-export const connectWallet = (newChainName: string): IConnectWallet => {
-  const chain = chains[newChainName];
+export const connectWallet = (newChainName: Chains, type: IChainType): IConnectWallet => {
+  const chain = chains[newChainName][type];
   return {
     network: {
       chainName: chain.name,
@@ -47,7 +65,6 @@ export const connectWallet = (newChainName: string): IConnectWallet => {
   };
 };
 
-// eslint-disable-next-line no-shadow
 export enum ContractsNames {
   token = 'token',
 }

@@ -11,9 +11,10 @@ import userSelector from 'store/user/selectors';
 import { NotificationModal } from 'containers/NotificationModal';
 import uiSelector from 'store/ui/selectors';
 import { useLocation } from 'react-router-dom';
-// import { useDispatch } from 'react-redux';
 import actionTypesUser from 'store/user/actionTypes';
 import { useSmoothTopScroll } from 'hooks/useSmoothTopScroll';
+import { useDispatch } from 'react-redux';
+import { updateUserState } from 'store/user/reducer';
 import s from './styles.module.scss';
 
 export interface LayoutProps {
@@ -25,9 +26,9 @@ export const Layout: FC<LayoutProps> = ({ children }) => {
   const { pathname } = useLocation();
   const { connect, disconnect } = useWalletConnectorContext();
 
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-  const { address } = useShallowSelector<State, UserState>(userSelector.getUser);
+  const { address, chainType } = useShallowSelector<State, UserState>(userSelector.getUser);
   const { [actionTypesUser.UPDATE_USER_INFO]: userInfoRequest } = useShallowSelector(uiSelector.getUI);
 
   const isUserInfoLoading = useMemo(() => userInfoRequest === RequestStatus.REQUEST, [userInfoRequest]);
@@ -42,6 +43,10 @@ export const Layout: FC<LayoutProps> = ({ children }) => {
   const disconnectWallet = useCallback(() => {
     disconnect();
   }, [disconnect]);
+
+  const handleToggleChainType = useCallback(() => {
+    dispatch(updateUserState({ chainType: chainType === 'mainnet' ? 'testnet' : 'mainnet' }));
+  }, [chainType, dispatch]);
 
   const firstPathAtPathname = useMemo(() => pathname.split('/')[1], [pathname]);
 
@@ -61,7 +66,15 @@ export const Layout: FC<LayoutProps> = ({ children }) => {
         <NotificationModal />
         {+width < 800 && <MobileNavigation />}
         {isNeedToShowHeaderFooter && (
-          <Header address={address} disconnect={disconnectWallet} onConnectWallet={handleConnectWallet} isHomePage={isHomePage} isUserInfoLoading={isUserInfoLoading} />
+          <Header
+            address={address}
+            chainType={chainType}
+            isHomePage={isHomePage}
+            isUserInfoLoading={isUserInfoLoading}
+            onConnectWallet={handleConnectWallet}
+            disconnect={disconnectWallet}
+            onToggleChainType={handleToggleChainType}
+          />
         )}
 
         {children}

@@ -1,2 +1,3 @@
-// Example
-@include font-face('Inter', '../assets/fonts/Inter-Regular', 400, normal, 'ttf');
+// Example: load font through
+// yarn add @fontsource/fontname
+@import "~@fontsource/inter";

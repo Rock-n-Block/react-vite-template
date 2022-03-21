@@ -1,19 +1,20 @@
 import { FC } from 'react';
 
-import { Header, RouterManager } from 'containers';
+import { Layout, RouteManager as Router } from 'containers';
+import { ToastContainer } from 'react-toastify';
 
-import WalletConnect from './services/WalletConnect';
+import { WalletConnectContext } from 'services/walletConnect';
+
+import 'react-toastify/dist/ReactToastify.css';
 
 const App: FC = () => {
   return (
-    <WalletConnect>
-      <div className="main_wrapper">
-        <div className="page_wrapper">
-          <Header />
-          <RouterManager />
-        </div>
-      </div>
-    </WalletConnect>
+    <WalletConnectContext>
+      <ToastContainer autoClose={4000} hideProgressBar position="top-right" closeButton={false} />
+      <Layout>
+        <Router />
+      </Layout>
+    </WalletConnectContext>
   );
 };
 export default App;

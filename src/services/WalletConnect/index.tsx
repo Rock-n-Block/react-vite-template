@@ -1,107 +1,93 @@
-import { createContext, FC, useCallback, useContext, useEffect, useMemo, useRef } from 'react';
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { createContext, FC, useCallback, useContext, useEffect, useMemo, useState } from 'react';
+import { toast } from 'react-toastify';
 
-import { observer } from 'mobx-react-lite';
-import { rootStore } from 'store';
+import { useDispatch } from 'react-redux';
+import { disconnectWalletState, updateUserState } from 'store/user/reducer';
+import userSelector from 'store/user/selectors';
 
-import { chains } from 'config';
+import { Subscription } from 'rxjs';
 
-import { WalletService } from 'services/WalletService';
-import { chainsEnum } from 'types';
+import { useShallowSelector } from 'hooks';
+import { Chains, State, UserState, WalletProviders } from 'types';
 
-declare global {
-  interface Window {
-    ethereum: any;
-  }
-}
+import { WalletService } from '../walletService';
 
-const WalletConnectContext = createContext<{
-  connect: (chainName: chainsEnum, providerName: 'MetaMask') => Promise<string>;
+interface IContextValue {
+  connect: (provider: WalletProviders, chain: Chains) => Promise<void>;
   disconnect: () => void;
   walletService: WalletService;
-}>({
-  connect: async (): Promise<string> => '',
-  disconnect: (): void => {},
-  walletService: new WalletService(),
-});
+}
 
-const Connect: FC = observer(({ children }) => {
-  const provider = useRef<WalletService>(
-    new WalletService(chains['Binance-Smart-Chain'].network.rpc as string),
-  );
+const Web3Context = createContext({} as IContextValue);
+
+const WalletConnectContext: FC = ({ children }) => {
+  const [currentSubsriber, setCurrentSubsciber] = useState<Subscription>();
+  const WalletConnect = useMemo(() => new WalletService(), []);
+  const dispatch = useDispatch();
+  const { address, provider: WalletProvider, chainType } = useShallowSelector<State, UserState>(userSelector.getUser);
 
   const disconnect = useCallback(() => {
-    // USE THIS: delete localStorage.project_name_logged;
-    delete localStorage.project_name_logged;
-    rootStore.user.disconnect();
-  }, []);
+    dispatch(disconnectWalletState());
+    WalletConnect.resetConnect();
+    currentSubsriber?.unsubscribe();
+  }, [WalletConnect, currentSubsriber, dispatch]);
+
+  const subscriberSuccess = useCallback(() => {
+    if (document.visibilityState !== 'visible') {
+      disconnect();
+    }
+  }, [disconnect]);
+
+  const subscriberError = useCallback(
+    (err: any) => {
+      console.error(err);
+      if (err.code === 4) {
+        WalletConnect.resetConnect();
+        toast.error('You changed to wrong network. Please choose Binance-Smart-Chain');
+        dispatch(disconnectWalletState());
+      }
+    },
+    [WalletConnect, dispatch],
+  );
 
   const connect = useCallback(
-    async (chainName: chainsEnum, providerName: 'MetaMask') => {
-      if (window.ethereum) {
+    async (provider: WalletProviders, chain: Chains) => {
+      const connected = await WalletConnect.initWalletConnect(provider, chain, chainType);
+      if (connected) {
         try {
-          const isConnected = await provider.current.initWalletConnect(
-            chainName,
-            providerName as any,
-          );
+          const sub = WalletConnect.eventSubscribe().subscribe(subscriberSuccess, subscriberError);
+          const accountInfo: any = await WalletConnect.getAccount();
 
-          if (isConnected.connected) {
-            try {
-              const { address }: any = await provider.current.getAccount();
-              provider.current.setAccountAddress(address);
-              rootStore.user.setAddress(address);
-              localStorage.project_name_logged = true;
-
-              const eventSubs = provider.current.connectWallet.eventSubscriber().subscribe(
-                (res: any) => {
-                  if (res.name === 'accountsChanged' && rootStore.user.address !== res.address) {
-                    disconnect();
-                  }
-                },
-                (err: any) => {
-                  // eslint-disable-next-line no-console
-                  console.log(err);
-                  eventSubs.unsubscribe();
-                  disconnect();
-                },
-              );
-              return address;
-            } catch (err: any) {
-              console.error('getAccount wallet connect - get user account err: ', err);
-              if (!(err.code && err.code === 6)) {
-                disconnect();
-              }
-            }
+          if (accountInfo.address) {
+            dispatch(updateUserState({ provider: accountInfo.type, address: accountInfo.address }));
+            toast.success(`Wallet connected: ${accountInfo.address.slice(0, 5)}...${accountInfo.address.slice(-5)}`);
           }
-        } catch (err) {
-          console.error(err);
-          disconnect();
-          throw new Error();
+
+          setCurrentSubsciber(sub);
+        } catch (error: any) {
+          console.log(error);
+          // metamask doesn't installed,
+          // redirect to download MM or open MM on mobile
+          if (error.code === 4) {
+            window.open(`https://metamask.app.link/dapp/${window.location.hostname + window.location.pathname}/?utm_source=mm`);
+          }
         }
       }
-      throw new Error();
     },
-    [disconnect, provider],
+    [WalletConnect, chainType, dispatch, subscriberError, subscriberSuccess],
   );
-
-  const walletConnectValue = useMemo(() => {
-    return { connect, disconnect, walletService: provider.current };
-  }, [connect, disconnect, provider]);
 
   useEffect(() => {
-    // USE THIS INSTEAD: if (window.ethereum && localStorage.project_name_logged) {
-    if (window.ethereum && localStorage.project_name_logged) {
-      connect(chainsEnum['Binance-Smart-Chain'], 'MetaMask').then();
+    // connect user if he connected previously
+    if (WalletProvider && !address.length) {
+      connect(WalletProviders.metamask, Chains.bsc);
     }
-  }, [connect, provider.current.connectWallet]);
+  }, [WalletProvider, address.length, connect]);
 
-  return (
-    <WalletConnectContext.Provider value={walletConnectValue}>
-      {children}
-    </WalletConnectContext.Provider>
-  );
-});
-export default Connect;
-
-export const useWalletConnectorContext = () => {
-  return useContext(WalletConnectContext);
+  return <Web3Context.Provider value={{ connect, disconnect, walletService: WalletConnect }}>{children}</Web3Context.Provider>;
 };
+
+const useWalletConnectorContext = () => useContext(Web3Context);
+
+export { WalletConnectContext, useWalletConnectorContext };

@@ -1,66 +1,86 @@
-import { INetwork } from '@amfi/connect-wallet/dist/interface';
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { Chains, IChainType, IConnectWallet, IContracts } from 'types';
 
-import { chainsEnum, IConnectWallet, IContracts } from 'types';
-
-import { stakingAbi } from './abi';
-
-export const is_production = false;
+import { erc20Abi } from './abi';
 
 export const chains: {
   [key: string]: {
-    name: chainsEnum;
-    network: INetwork;
-    provider: {
-      [key: string]: any;
+    [key: string]: {
+      name: string;
+      chainId: number;
+      provider: {
+        [key: string]: any;
+      };
+      img?: any;
     };
-    explorer: string;
   };
 } = {
-  [chainsEnum['Binance-Smart-Chain']]: {
-    name: chainsEnum['Binance-Smart-Chain'],
-    network: {
-      chainID: is_production ? 56 : 97,
-      chainName: is_production ? 'Binance Smart Chain' : 'Binance Smart Chain Testnet',
-      nativeCurrency: {
-        name: 'BNB',
-        symbol: 'BNB',
-        decimals: 18,
+  'Binance-Smart-Chain': {
+    mainnet: {
+      name: 'Binance-Smart-Chain',
+      chainId: 56,
+      provider: {
+        MetaMask: { name: 'MetaMask' },
+        WalletConnect: {
+          name: 'WalletConnect',
+          useProvider: 'rpc',
+          provider: {
+            rpc: {
+              56: 'https://bsc-dataseed.binance.org/',
+              chainId: 56,
+            },
+          },
+        },
       },
-      rpc: is_production
-        ? 'https://bsc-dataseed.binance.org/'
-        : 'https://data-seed-prebsc-1-s1.binance.org:8545/',
-      blockExplorerUrl: is_production ? 'https://bscscan.com' : 'https://testnet.bscscan.com',
     },
-    provider: {
-      MetaMask: { name: 'MetaMask' },
+    testnet: {
+      name: 'Binance-Smart-Chain',
+      chainId: 97,
+      provider: {
+        MetaMask: { name: 'MetaMask' },
+        WalletConnect: {
+          name: 'WalletConnect',
+          useProvider: 'rpc',
+          provider: {
+            rpc: {
+              97: 'https://data-seed-prebsc-1-s1.binance.org:8545/',
+              chainId: 97,
+            },
+          },
+        },
+      },
     },
-    explorer: is_production ? 'https://bscscan.com' : 'https://testnet.bscscan.com',
   },
 };
 
-export const connectWallet = (chainName: chainsEnum): IConnectWallet => {
-  const chain = chains[chainName];
-
+export const connectWallet = (newChainName: Chains, type: IChainType): IConnectWallet => {
+  const chain = chains[newChainName][type];
   return {
-    wallets: ['MetaMask'],
-    network: chain.network,
+    network: {
+      chainName: chain.name,
+      chainID: chain.chainId,
+    },
     provider: chain.provider,
     settings: { providerType: true },
   };
 };
 
-export const contracts: IContracts = {
-  type: is_production ? 'mainnet' : 'testnet',
-  names: ['STAKING'],
-  params: {
-    STAKING: {
-      mainnet: {
-        address: '0xfab0fd2586e287746aaec8397109b5fe6d2ff053',
-        abi: stakingAbi,
-      },
+export enum ContractsNames {
+  token = 'token',
+}
+
+export type IContractsNames = keyof typeof ContractsNames;
+
+export const contractsConfig: IContracts = {
+  names: Object.keys(ContractsNames),
+  decimals: 18,
+  contracts: {
+    [ContractsNames.token]: {
       testnet: {
-        address: '0x3bEeA65fdf4C0C51055675800B142045Ed4c76A2',
-        abi: stakingAbi,
+        address: {
+          [Chains.bsc]: '0x906041Be37F54D50c37c76c31351dA7CDddb0eBc',
+        },
+        abi: erc20Abi,
       },
     },
   },

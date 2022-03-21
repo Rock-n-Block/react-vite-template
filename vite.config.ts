@@ -17,7 +17,8 @@ export default defineConfig({
     url(),
     svgr(),
   ],
-  input: 'src/main.js',
+  // @ts-ignore
+  input: 'src/index.js',
   output: {
     file: 'bundle.js',
     format: 'cjs',

@@ -1,2 +1,2 @@
-export * from './WalletConnect';
-export * from './WalletService';
+export * from './walletService';
+export * from './walletConnect';

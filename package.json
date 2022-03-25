@@ -54,6 +54,7 @@
     "@rollup/plugin-eslint": "^8.0.1",
     "@rollup/plugin-inject": "^4.0.4",
     "@rollup/plugin-url": "^6.1.0",
+    "@storybook/addon-a11y": "^6.4.19",
     "@storybook/addon-actions": "^6.3.8",
     "@storybook/addon-essentials": "^6.3.8",
     "@storybook/addon-links": "^6.3.8",

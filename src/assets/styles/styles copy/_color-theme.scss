@@ -1,0 +1,38 @@
+$button-outlined-default: 'button-outlined-default';
+$button-outlined-hover: 'button-outlined-hover';
+$button-outlined-active: 'button-outlined-active';
+$button-disabled: 'button-disabled';
+
+
+$themes: (
+        default: (
+          button-outlined-default: $default-button-outlined-default,
+          button-outlined-hover: $default-button-outlined-hover,
+          button-outlined-active: $default-button-outlined-active,
+          button-disabled: $default-button-disabled,
+        ),
+        light: (
+          button-outlined-default: $light-button-outlined-default,
+          button-outlined-hover: $light-button-outlined-hover,
+          button-outlined-active: $light-button-outlined-active,
+          button-disabled: $light-button-disabled,
+        ),
+);
+
+@mixin themed() {
+  @each $theme, $map in $themes {
+    .theme--#{$theme} & {
+      $theme-map: () !global;
+      @each $key, $submap in $map {
+        $value: map-get(map-get($themes, $theme), '#{$key}');
+        $theme-map: map-merge($theme-map, ($key: $value)) !global;
+      }
+      @content;
+      $theme-map: null !global;
+    }
+  }
+}
+
+@function t($key) {
+  @return map-get($theme-map, $key);
+}

@@ -3,24 +3,24 @@ import { Link } from 'react-router-dom';
 
 import cn from 'clsx';
 
-import s from './styles.module.scss';
+import styles from './styles.module.scss';
 
 export interface ButtonProps {
-  color?: 'default' | 'filled' | 'outline' | 'disabled';
+  variant?: 'filled' | 'outlined' | 'text';
   size?: 'lg' | 'md' | 'sm';
-  className?: string;
-  onClick?: (event: never) => void;
   type?: 'button' | 'submit';
   disabled?: boolean;
-  onMouseLeave?: (event: never) => void;
-  onMouseOver?: (event: SyntheticEvent) => void;
   style?: CSSProperties;
   href?: string;
   btnRef?: RefObject<HTMLButtonElement>;
+  className?: string;
+  onClick?: (event: never) => void;
+  onMouseLeave?: (event: never) => void;
+  onMouseOver?: (event: SyntheticEvent) => void;
 }
 
 export const Button: FC<PropsWithChildren<ButtonProps>> = ({
-  color = 'default',
+  variant = 'outlined',
   size = 'lg',
   onClick = () => {},
   className,
@@ -36,9 +36,13 @@ export const Button: FC<PropsWithChildren<ButtonProps>> = ({
     return (
       <Link
         to={href}
-        className={cn(className, s.button, s[color], {
-          [s.disabled]: disabled || color === 'disabled',
-        })}
+        className={cn(
+          className,
+          styles.button,
+          styles[variant],
+          styles[size],
+          { [styles.disabled]: disabled },
+        )}
       >
         {children}
       </Link>
@@ -48,9 +52,13 @@ export const Button: FC<PropsWithChildren<ButtonProps>> = ({
     <button
       ref={btnRef}
       type={type === 'submit' ? 'submit' : 'button'}
-      className={cn(s.button, s[color], s[size], className, {
-        [s.disabled]: disabled || color === 'disabled',
-      })}
+      className={cn(
+        className,
+        styles.button,
+        styles[variant],
+        styles[size],
+        { [styles.disabled]: disabled },
+      )}
       onClick={onClick}
       disabled={disabled}
       onMouseLeave={onMouseLeave}

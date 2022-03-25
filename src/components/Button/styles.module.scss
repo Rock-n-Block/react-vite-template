@@ -1,53 +1,58 @@
-@import 'src/styles/mixins';
-
-$bg-default: white;
-$color-default: black;
-$border-default: gray;
+@import '../../assets/styles/variables';
 
 .button {
-  box-sizing: border-box;
   width: fit-content;
-
-  white-space: nowrap;
-  text-decoration: none;
-
   cursor: pointer;
+  border-radius: $button-border-radius;
 
-  background-color: transparent;
-  border: none;
-  @include flex(row, center, center, nowrap);
+  &.outlined {
+    background: var(--button-outlined-default-background);
+    border: $button-border-width solid var(--button-outlined-default-border);
+    color: var(--button-outlined-default-color);
 
-  &.default {
-    color: $color-default;
-    background: $bg-default;
-    border: 1px solid $border-default;
-    border-radius: 18px;
-  }
+    &:hover {
+      background: var(--button-outlined-hover-background);
+      border: $button-border-width solid var(--button-outlined-hover-border);
+      color: var(--button-outlined-hover-color);
+      background-origin: border-box;
+    }
 
-  &.sm {
-  }
-
-  &.md {
-  }
-
-  &.lg {
+    &:active {
+      background: var(--button-outlined-active-background);
+      border: $button-border-width solid var(--button-outlined-active-border);
+      color: var(--button-outlined-active-color);
+      background-origin: border-box;
+    }
   }
 
   &.filled {
-    &:hover,
-    &:focus {
+    background: var(--button-filled-default-background);
+    border: $button-border-width solid var(--button-filled-default-border);
+    color: var(--button-filled-default-color);
+
+    &:hover {
+      background: var(--button-filled-hover-background);
+      border: $button-border-width solid var(--button-filled-hover-border);
+      color: var(--button-filled-hover-color);
+    }
+
+    &:active {
+      background: var(--button-filled-active-background);
+      border: $button-border-width solid var(--button-filled-active-border);
+      color: var(--button-filled-active-color);
     }
   }
 
-  &.outline {
-    &:hover,
-    &:focus {
-    }
+
+  &.lg {
+    padding: $lg-button-padding;
   }
 
-  &.disabled {
-    &:hover,
-    &:focus {
-    }
+  &.md {
+    padding: $md-button-padding;
+  }
+
+  &.sm {
+    padding: $sm-button-padding;
   }
 }

@@ -32,7 +32,7 @@ const Text: FC<PropsWithChildren<Props>> = ({
   className,
   style = { },
   size = 's',
-  color = 'basic',
+  color = 'default',
   align = 'left',
   weight = 'normal',
 }) => (
@@ -49,7 +49,7 @@ const Text: FC<PropsWithChildren<Props>> = ({
         className,
       ),
     },
-    children,
+    [children],
   )
 );
 

@@ -1,5 +1,6 @@
-@import '../../assets/styles/index.scss';
+@import '../src/assets/styles/index.scss';
 
 .app {
-  background-color: var(--button-disabled);
+  background: var(--default-background);
+  height: 100%;
 }

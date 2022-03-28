@@ -70,6 +70,7 @@ export const Layout: FC<LayoutProps> = ({ children }) => {
   return (
     <div className={clsx(styles.app, { [styles.light]: islight })}>
       <Button variant="outlined" onClick={handleSwitchTheme}>THEME switch</Button>
+      <i className="icon-checkmark" />
       <div className={styles.content}>
         <NotificationModal />
         {+width < 800 && <MobileNavigation />}

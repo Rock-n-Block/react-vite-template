@@ -17,3 +17,7 @@ Starts dev server
 
 ### `yarn build`
 To build prod version
+
+### `yarn generate-contract-types`
+To generate contract types when you change or add new **.abi.json files
+

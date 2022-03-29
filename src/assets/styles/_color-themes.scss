@@ -2,6 +2,7 @@
 @import './component-variables/icon_button';
 @import './component-variables/typography';
 @import './component-variables/main';
+@import './component-variables/toastify';
 
 :root {
 	$colors:(
@@ -9,6 +10,7 @@
 		$buttonColorsDefault,
 		$iconButtonColorsDefault,
 		$typographyColorsDefault,
+		$toastifyColorsDefault,
 	);
 
 	@each $key_name in $colors {
@@ -24,6 +26,7 @@
 		$buttonColorsLight,
 		$iconButtonColorsLight,
 		$typographyColorsLight,
+		$toastifyColorsLight,
 	);
 
 	@each $key_name in $colors {

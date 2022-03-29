@@ -1,5 +1,4 @@
 import React from 'react';
-
 import { toastifyPropsMocked } from './Toastify.mock';
 import { Toastify } from './Toastify';
 

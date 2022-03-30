@@ -1,6 +1,8 @@
 @import './component-variables/button';
 @import './component-variables/icon_button';
 @import './component-variables/typography';
+@import './component-variables/switch';
+@import './component-variables/input';
 @import './component-variables/main';
 
 :root {
@@ -9,6 +11,8 @@
 		$buttonColorsDefault,
 		$iconButtonColorsDefault,
 		$typographyColorsDefault,
+		$switchColorsDefault,
+		$inputColorsDefault,
 	);
 
 	@each $key_name in $colors {
@@ -24,6 +28,8 @@
 		$buttonColorsLight,
 		$iconButtonColorsLight,
 		$typographyColorsLight,
+		$switchColorsLight,
+		$inputColorsLight,
 	);
 
 	@each $key_name in $colors {

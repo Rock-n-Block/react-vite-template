@@ -16,7 +16,7 @@ import { useSmoothTopScroll } from 'hooks/useSmoothTopScroll';
 import { useDispatch } from 'react-redux';
 import { updateUserState } from 'store/user/reducer';
 import clsx from 'clsx';
-import { Button } from 'components';
+import { Switch } from 'components/Switch';
 import styles from './styles.module.scss';
 
 export interface LayoutProps {
@@ -69,7 +69,7 @@ export const Layout: FC<LayoutProps> = ({ children }) => {
 
   return (
     <div className={clsx(styles.app, { [styles.light]: islight })}>
-      <Button variant="outlined" onClick={handleSwitchTheme}>THEME switch</Button>
+      <Switch checked={islight} onChange={handleSwitchTheme} />
       <i className="icon-checkmark" />
       <div className={styles.content}>
         <NotificationModal />

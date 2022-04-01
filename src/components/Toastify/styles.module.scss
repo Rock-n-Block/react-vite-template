@@ -1,24 +1,68 @@
-.success {
-  background-image: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
-  &Text {
-    color: rgb(43, 43, 43);
+  @import '../../assets/styles/variables';
+  @import '../../assets/styles/mixins';
+
+
+.toastify{
+  font-family: 'Inter';
+  width: 454px;
+  min-height: 54px;
+  border-radius: 10px;
+  @include flexbox(center, flex-start);
+  padding: spacing(2);
+  .startAdorment{
+    margin-right: 16px;
+    width: 24px;
+    height: 24px;
+  }
+  .endAdorment{
+    margin-left: 43px;
+    width: 24px;
+    height: 24px;
   }
 }
+
+.infoText, .warningText, .errorText, .successText {
+  width: 315px;
+  min-height: 24px;
+  margin-top: auto !important;
+  margin-bottom: auto !important;
+}
+
 .info {
-  background-image: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);
-  &Text {
-    color: rgb(43, 43, 43);
+  background: var(--toastify-default-color);
+  color: var(--toastify-info-font-color);
+  border: $toastify-border-width solid var(--toastify-secondary-color);
+  .startAdorment > svg > path {
+    fill: var(--toastify-info-icon-color);
+  }
+  .endAdorment > svg > path {
+    fill: var(--toastify-info-color);
   }
 }
 .warning {
-  background-image: linear-gradient(to right, #fa709a 0%, #fee140 100%);
-  &Text {
-    color: rgb(43, 43, 43);
+  background: var(--toastify-default-color);
+  color: var(--toastify-warning-font-color);
+  border: $toastify-border-width solid var(--toastify-warning-color);
+  .endAdorment > svg > path {
+    fill: var(--toastify-warning-color);
   }
 }
 .error {
-  background-image: linear-gradient(to top, #ff0844 0%, #ffb199 100%);
-  &Text {
-    color: rgb(43, 43, 43);
+  background: var(--toastify-default-color);
+  color: var(--toastify-error-font-color);
+  border: $toastify-border-width solid var(--toastify-error-color);
+  .endAdorment > svg > path {
+    fill: var(--toastify-error-color);
+  }
+}
+.success {
+  background: var(--toastify-default-color);
+  color: var(--toastify-success-font-color);
+  border: $toastify-border-width solid var(--toastify-success-color);
+  .startAdorment > svg > path {
+    fill: var(--toastify-success-icon-color);
+  }
+  .endAdorment > svg > path {
+    fill: var(--toastify-success-color);
   }
 }

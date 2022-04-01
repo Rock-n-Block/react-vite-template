@@ -5,7 +5,6 @@
 @import './component-variables/input';
 @import './component-variables/select';
 @import './component-variables/main';
-@import './component-variables/toastify';
 
 :root {
 	$colors:(
@@ -13,7 +12,6 @@
 		$buttonColorsDefault,
 		$iconButtonColorsDefault,
 		$typographyColorsDefault,
-		$toastifyColorsDefault,
 		$switchColorsDefault,
 		$inputColorsDefault,
 		$selectColorsDefault,
@@ -32,7 +30,6 @@
 		$buttonColorsLight,
 		$iconButtonColorsLight,
 		$typographyColorsLight,
-		$toastifyColorsLight,
 		$switchColorsLight,
 		$inputColorsLight,
 		$selectColorsLight,

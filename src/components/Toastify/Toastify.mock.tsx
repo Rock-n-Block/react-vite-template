@@ -2,13 +2,8 @@ import { ToastifyProps } from './Toastify';
 
 export const toastifyPropsMocked: ToastifyProps[] = [
   {
-    type: 'info',
-    message: 'Please change network to Alfajores testnet  in your wallet',
-    className: '',
-  },
-  {
-    type: 'warning',
-    message: 'Entry unpublished',
+    type: 'success',
+    message: 'Changes applies successfully',
     className: '',
   },
   {
@@ -17,8 +12,13 @@ export const toastifyPropsMocked: ToastifyProps[] = [
     className: '',
   },
   {
-    type: 'success',
-    message: 'Changes applies successfully',
+    type: 'warning',
+    message: 'Entry unpublished',
+    className: '',
+  },
+  {
+    type: 'info',
+    message: 'Please change network to Alfajores testnet  in your wallet',
     className: '',
   },
 ];

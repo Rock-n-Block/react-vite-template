@@ -1,28 +1,35 @@
-import React, { VFC, ChangeEvent, FocusEvent, createElement } from 'react';
+import React, {
+  VFC,
+  ChangeEvent,
+  FocusEvent,
+  createElement,
+  ReactElement,
+} from 'react';
 import cn from 'clsx';
 import { Text } from 'components';
 import styles from './styles.module.scss';
 
 export interface InputProps {
-  id?: string,
-  component?: 'input' | 'textarea'
-  type?: 'text' | 'number' | 'password',
-  label?: string,
-  name: string,
-  value?: string,
+  id?: string;
+  component?: 'input' | 'textarea';
+  type?: 'text' | 'number' | 'password';
+  label?: string;
+  name: string;
+  value?: string;
   placeholder?: string;
-  className?: string,
-  classNameInput?: string,
-  classNameInputWrap?: string,
-  classNameLabel?: string,
-  error?: boolean | string,
-  disabled?: boolean,
-  isCorrect?: boolean | '',
-  autoComplete?: 'off' | 'on',
-  onChange?: (event: ChangeEvent<HTMLInputElement>) => void,
-  onFocus?: (event: FocusEvent<HTMLInputElement>) => void,
-  onBlur?: (event: FocusEvent<HTMLInputElement>) => void,
-  required?: boolean,
+  className?: string;
+  classNameInput?: string;
+  classNameInputWrap?: string;
+  classNameLabel?: string;
+  error?: boolean | string;
+  endAdorment?: ReactElement | string;
+  disabled?: boolean;
+  isCorrect?: boolean | '';
+  autoComplete?: 'off' | 'on';
+  onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
+  onFocus?: (event: FocusEvent<HTMLInputElement>) => void;
+  onBlur?: (event: FocusEvent<HTMLInputElement>) => void;
+  required?: boolean;
 }
 
 export const Input:VFC<InputProps> = ({
@@ -38,6 +45,7 @@ export const Input:VFC<InputProps> = ({
   classNameLabel,
   placeholder,
   error,
+  endAdorment,
   disabled = false,
   isCorrect = false,
   autoComplete = 'off',
@@ -94,6 +102,7 @@ export const Input:VFC<InputProps> = ({
             {label}
           </Text>
         )}
+        {(endAdorment && component !== 'textarea') && <span className={styles.endAdorment}>{endAdorment}</span>}
       </div>
     </label>
     {error && typeof error === 'string' && (

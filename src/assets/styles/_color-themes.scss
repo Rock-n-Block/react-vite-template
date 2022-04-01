@@ -3,6 +3,7 @@
 @import './component-variables/typography';
 @import './component-variables/switch';
 @import './component-variables/input';
+@import './component-variables/select';
 @import './component-variables/main';
 
 :root {
@@ -13,6 +14,7 @@
 		$typographyColorsDefault,
 		$switchColorsDefault,
 		$inputColorsDefault,
+		$selectColorsDefault,
 	);
 
 	@each $key_name in $colors {
@@ -30,6 +32,7 @@
 		$typographyColorsLight,
 		$switchColorsLight,
 		$inputColorsLight,
+		$selectColorsLight,
 	);
 
 	@each $key_name in $colors {

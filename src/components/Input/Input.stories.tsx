@@ -2,6 +2,7 @@ import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { text, boolean } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
 
+import { StarIcon } from 'assets/icons/icons';
 import { Input } from './Input';
 import { inputPropsMocked } from './Input.mock';
 
@@ -27,6 +28,7 @@ const Template: ComponentStory<typeof Input> = () => {
           disabled={disabled}
           isCorrect={isCorrect}
           onChange={onChange}
+          endAdorment={<StarIcon />}
         />
         <Input
           id="id2"
@@ -35,6 +37,27 @@ const Template: ComponentStory<typeof Input> = () => {
           label="Label"
           placeholder="Placeholder"
           error={error}
+          disabled={disabled}
+          isCorrect={isCorrect}
+          onChange={onChange}
+        />
+        <Input
+          id="id"
+          name="storybook"
+          label={placeholder}
+          error
+          disabled={disabled}
+          isCorrect={isCorrect}
+          onChange={onChange}
+          endAdorment={<StarIcon />}
+        />
+        <Input
+          id="id2"
+          name="storybook"
+          component="textarea"
+          label="Label"
+          placeholder="Placeholder"
+          error
           disabled={disabled}
           isCorrect={isCorrect}
           onChange={onChange}

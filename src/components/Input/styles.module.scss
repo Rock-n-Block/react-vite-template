@@ -11,9 +11,9 @@
 }
 
 .labelTextFocusedCommon {
-  font-size: 12px !important;
-  font-weight: 400 !important;
-  line-height: 20px !important;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 20px;
   color: var(--input-focus-label)
 }
 
@@ -25,7 +25,6 @@
   &:focus-within .input + .labelText {
     @extend .labelTextFocusedCommon;
     top: 14px;
-    
   }
 
   &:focus-within .textarea + .labelText {
@@ -83,18 +82,22 @@
     background: var(--input-hover-background);
     border: var(--input-hover-border);
     color: var(--typography-default-color);
-    & ~ .labelText {
+    & + .labelText {
       color: var(--input-hover-label);
     }
   }
 
   &:not(:placeholder-shown) {
-    & ~ .labelText {
+    & + .labelText {
       top: 14px;
-      font-size: 12px !important;
-      font-weight: 400 !important;
-      line-height: 20px !important;
+      font-size: 12px;
+      font-weight: 400;
+      line-height: 20px;
       color: var(--input-active-label);
+    }
+
+    & ~ .endAdorment > svg > path {
+      fill: var(--input-focus-icon);
     }
     padding-top: spacing(3);
   }
@@ -108,6 +111,9 @@
     caret-color: var(--input-active-caret);
     padding-top: spacing(3);
     transition: 0s;
+    & ~ .endAdorment > svg > path {
+      fill: var(--input-focus-icon);
+    }
   }
 
   &:active {
@@ -124,13 +130,24 @@
     cursor: not-allowed;
   }
 
-  &.bigRightPadding {
-    padding-right: 50px;
-  }
-
   &.error {
-    background-color: red;
-    border: 1px solid red;
+    background-color: var(--input-error-background);;
+    border: var(--input-error-border);
+    & ~ .endAdorment > svg > path {
+      fill: var(--input-error-icon);
+    }
+
+    & + .labelText {
+      color: var(--input-error-label);
+    }
+
+    &:focus-within + .labelText {
+      color: var(--input-error-label);
+    }
+
+    &:not(:placeholder-shown) + .labelText {
+      color: var(--input-error-label);
+    }
   }
 
   &[type="number"] {
@@ -185,9 +202,21 @@
 
   &:not(:placeholder-shown) {
     padding-top: spacing(4);
-    & ~ .labelText {
+    & + .labelText {
       top: 20px;
       color: var(--input-active-label)
     }
+  }
+}
+
+.endAdorment {
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  right: spacing(3);
+  transform: translateY(-50%);
+
+  & > svg > path {
+    fill: var(--input-default-icon);
   }
 }

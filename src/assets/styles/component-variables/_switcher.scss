@@ -1,0 +1,30 @@
+$switcher-border-width: 1px;
+$switcherColorsDefault: (
+    // checked
+    "switcher-checked-circle": transparent,
+    "switcher-checked-background": linear-gradient(90deg, #291AED 0%, #C59AFC 100%),
+    "switcher-checked-border-color": transparent,
+    // default
+    "switcher-default-circle": #F2F2F2,
+    "switcher-default-background": transparent,
+    "switcher-default-border-color":#F2F2F2,
+    // disabled
+    "switcher-disabled-circle": transparent,
+    "switcher-disabled-background": #64656A,
+    "switcher-disabled-border-color":transparent,
+  );
+  
+  $switcherColorsLight: (
+    // checked
+    "switcher-checked-circle": transparent,
+    "switcher-checked-background": linear-gradient(90deg, #291AED 0%, #C59AFC 100%),
+    "switcher-checked-border-color": transparent,
+    // default
+    "switcher-default-circle": #6C778F,
+    "switcher-default-background": transparent,
+    "switcher-default-border-color":#6C778F,
+    // disabled
+    "switcher-disabled-circle": transparent,
+    "switcher-disabled-background": #6C778F,
+    "switcher-disabled-border-color":transparent,
+  );

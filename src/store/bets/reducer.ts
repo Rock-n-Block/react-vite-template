@@ -14,13 +14,13 @@ export const betReducer = createSlice({
   name: 'bet',
   initialState,
   reducers: {
-    setMinBetState: (state, action: PayloadAction<Partial<BetState>>) => ({
+    setMinBetState: (state, action: PayloadAction<number>) => ({
       ...state,
-      ...action.payload,
+      minBet: action.payload,
     }),
-    setMaxBetState: (state, action: PayloadAction<Partial<BetState>>) => ({
+    setMaxBetState: (state, action: PayloadAction<number>) => ({
       ...state,
-      ...action.payload,
+      maxBet: action.payload,
     }),
     resetBetState: () => ({
       ...initialState,

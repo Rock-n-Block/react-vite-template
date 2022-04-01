@@ -1,7 +1,7 @@
 import { fork } from 'redux-saga/effects';
 
-import getTokenBalance from './getMaxBet';
+import getMaxBet from './getMaxBet';
 
-export default function* userSagas() {
-  yield fork(getTokenBalance);
+export default function* maxBetSaga() {
+  yield fork(getMaxBet);
 }

@@ -4,7 +4,7 @@ import {
   createElement,
   CSSProperties,
 } from 'react';
-import cx from 'classnames';
+import cn from 'clsx';
 import {
   TextAlign as Align,
   TextColor as Color,
@@ -40,7 +40,7 @@ const Text: FC<PropsWithChildren<Props>> = ({
     tag,
     {
       style,
-      className: cx(
+      className: cn(
         styles.text,
         styles[size],
         styles[color],

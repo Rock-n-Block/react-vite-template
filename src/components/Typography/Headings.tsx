@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react';
-import cx from 'classnames';
+import cn from 'clsx';
 import {
   HeadingType,
   TextAlign as Align,
@@ -25,7 +25,7 @@ const createHeading = (type: HeadingType) => ({
   ...rest
 }: Props) => {
   const hProps = {
-    className: cx(
+    className: cn(
       styles[type],
       styles[color],
       styles[`${weight}Weight`],

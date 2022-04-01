@@ -6,6 +6,7 @@
   cursor: pointer;
   border-radius: 8px;
   @include flexbox();
+  transition: ease-in-out 200ms;
 
   &.outlined {
     background: var(--button-outlined-default-background);
@@ -269,8 +270,8 @@
     }
 
     &:active {
-      background: var(--button-filled-active-background);
-      border: $button-border-width solid var(--button-filled-active-border);
+      background: var(--icon-button-filled-active-background);
+      border: $button-border-width solid var(--icon-button-filled-active-border);
 
       & > svg > path {
         fill: var(--icon-button-filled-active-icon-color);
@@ -278,7 +279,7 @@
     }
 
     &.disabled {
-      background: var(--icon-button-filled-default-background);
+      background: var(--icon-button-filled-disabled-background);
       border: none;
 
       & > svg > path {
@@ -286,7 +287,7 @@
       }
       
       &:hover {
-        background: var(--icon-button-filled-hover-background);
+        background: var(--icon-button-filled-disabled-background);
         border: none;
 
         & > svg > path {
@@ -295,11 +296,11 @@
       }
   
       &:active {
-        background: var(--icon-button-filled-active-background);
-        border: $button-border-width solid var(--icon-button-filled-active-border);
+        background: var(--icon-button-filled-disabled-background);
+        border: $button-border-width solid var(--icon-button-filled-disabled-border);
 
         & > svg > path {
-          fill: var(--icon-button-filled-secondary-disabled-icon-color);
+          fill: var(--icon-button-filled-disabled-icon-color);
         }
       }
     }
@@ -332,8 +333,8 @@
     }
 
     &.disabled {
-      background: var(--icon-button-outlined-secondary-default-background);
-      border: $button-border-width solid var(--icon-button-outlined-secondary-default-border);
+      background: var(--icon-button-outlined-secondary-disabled-background);
+      border: $button-border-width solid var(--icon-button-outlined-secondary-disabled-border);
 
       & > svg > path {
         fill: var(--icon-button-outlined-secondary-disabled-icon-color);
@@ -349,8 +350,8 @@
       }
   
       &:active {
-        background: var(--icon-button-outlined-secondary-active-background);
-        border: $button-border-width solid var(--icon-button-outlined-secondary-active-border);
+        background: var(--icon-button-outlined-secondary-disabled-background);
+        border: $button-border-width solid var(--icon-button-outlined-secondary-disabled-border);
 
         & > svg > path {
           fill: var(--icon-button-outlined-secondary-disabled-icon-color);

@@ -1,6 +1,9 @@
 @import './component-variables/button';
 @import './component-variables/icon_button';
 @import './component-variables/typography';
+@import './component-variables/switch';
+@import './component-variables/input';
+@import './component-variables/select';
 @import './component-variables/main';
 @import './component-variables/toastify';
 
@@ -11,6 +14,9 @@
 		$iconButtonColorsDefault,
 		$typographyColorsDefault,
 		$toastifyColorsDefault,
+		$switchColorsDefault,
+		$inputColorsDefault,
+		$selectColorsDefault,
 	);
 
 	@each $key_name in $colors {
@@ -27,6 +33,9 @@
 		$iconButtonColorsLight,
 		$typographyColorsLight,
 		$toastifyColorsLight,
+		$switchColorsLight,
+		$inputColorsLight,
+		$selectColorsLight,
 	);
 
 	@each $key_name in $colors {

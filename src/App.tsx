@@ -3,7 +3,7 @@ import { FC } from 'react';
 import { Layout, RouteManager as Router } from 'containers';
 import { ToastContainer } from 'react-toastify';
 
-import { WalletConnectContext } from 'services/walletConnect';
+import { WalletConnectContext } from 'services/WalletConnect';
 
 import 'react-toastify/dist/ReactToastify.css';
 

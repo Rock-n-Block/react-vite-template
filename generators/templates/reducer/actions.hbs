@@ -1,7 +1,7 @@
 import { createAction } from '@reduxjs/toolkit';
 
-import { helloWorldReq } from 'types/requests';
+import { HelloWorldReq } from 'types/requests';
 
 import actionTypes from './actionTypes';
 
-export const helloWorld = createAction<helloWorldReq>(actionTypes.HELLO_WORLD);
+export const helloWorld = createAction<HelloWorldReq>(actionTypes.HELLO_WORLD);

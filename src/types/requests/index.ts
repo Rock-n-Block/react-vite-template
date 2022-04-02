@@ -32,3 +32,6 @@ export type ApproveReq = {
   tokenAddress: string;
   web3Provider: Web3;
 };
+
+// example type for reducer generator
+export type HelloWorldReq = {};

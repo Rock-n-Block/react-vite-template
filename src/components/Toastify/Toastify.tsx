@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import clsx from 'clsx';
 import { InfoIcon, WarningIcon, ErrorIcon, SuccessIcon, CloseIcon } from 'assets/icons/icons/components/';
-import s from './styles.module.scss';
+import styles from './styles.module.scss';
 
 export type ToastifyProps = {
   type: 'success' | 'info' | 'warning' | 'error';
@@ -18,10 +18,10 @@ const toastifyHelper = {
 
 export const Toastify: FC<ToastifyProps> = ({ type, message }) => {
   return (
-    <div className={clsx(s.toastify, s[type], `${type}`)}>
-      <div className={clsx(s.startAdorment)}> {toastifyHelper[type]} </div>
-      <div className={s[`${type}Text`]}>{message}</div>
-      <div className={clsx(s.endAdorment, s[`icon${type}`])}>
+    <div className={clsx(styles.toastify, styles[type], `${type}`)}>
+      <div className={clsx(styles.startAdorment)}> {toastifyHelper[type]} </div>
+      <div className={styles[`${type}Text`]}>{message}</div>
+      <div className={clsx(styles.endAdorment, styles[`icon${type}`])}>
         <CloseIcon />
       </div>
     </div>

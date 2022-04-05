@@ -1,28 +1,17 @@
 import { VFC } from 'react';
-
-import cn from 'clsx';
-import { vector, vector1 } from 'assets/img/icons';
-import s from './styles.module.scss';
+import { vector } from 'assets/img/icons';
+import { Card } from 'components/Card';
 
 export interface СheckoutProps {
   className?: string;
 }
 
-export const Сheckout: VFC<СheckoutProps> = ({ className }) => {
+export const Сheckout: VFC<СheckoutProps> = () => {
   return (
-    <div className={cn(s.сheckout, className)}>
-      <div className={s.mainContainer}>
-        <div className={s.titleWrapper}>
-          <h2 className={s.title}>Token Contract</h2>
-          <div className={s.logo}>
-            <img src={vector} alt="" />
-            <img src={vector1} alt="" />
-          </div>
-        </div>
-        <div className={s.description}>
-          Create a Token and distribute it yourself or by our Crowdsale Contract
-        </div>
-      </div>
-    </div>
+    <Card
+      image={vector}
+      title="Token Contract"
+      description=" Create a Token and distribute it yourself or by our Crowdsale Contract"
+    />
   );
 };

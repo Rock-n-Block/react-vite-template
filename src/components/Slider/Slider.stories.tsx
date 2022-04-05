@@ -9,7 +9,6 @@ export default {
   title: 'components/Slider',
   component: Slider,
 } as ComponentMeta<typeof Slider>;
-// ts-
 const Template: ComponentStory<typeof Slider> = () => {
   const [value, setValue] = useState(null);
   // const onChange = useCallback(() => {});
@@ -18,6 +17,7 @@ const Template: ComponentStory<typeof Slider> = () => {
     setValue(newValue);
   }, []);
   useEffect(() => {
+    // eslint-disable-next-line no-console
     console.log(value);
   }, [value]);
   return (

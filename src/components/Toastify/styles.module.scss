@@ -1,7 +1,6 @@
   @import '../../assets/styles/variables';
   @import '../../assets/styles/mixins';
 
-
 .toastify{
   font-family: 'Inter';
   width: 454px;
@@ -9,6 +8,7 @@
   border-radius: 10px;
   @include flexbox(center, flex-start);
   padding: spacing(2);
+  cursor: pointer;
   .startAdorment{
     margin-right: 16px;
     width: 24px;

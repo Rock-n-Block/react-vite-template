@@ -14,7 +14,7 @@ export const Default: React.FC = () => {
       <button
         type="button"
         onClick={() => setNotification({
-          type: 'info',
+          type: 'warning',
           message: 'Message',
         })}
       >

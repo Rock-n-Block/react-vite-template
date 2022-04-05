@@ -18,12 +18,16 @@ const toastifyHelper = {
 
 export const Toastify: FC<ToastifyProps> = ({ type, message }) => {
   return (
-    <div className={clsx(styles.toastify, styles[type], `${type}`)}>
-      <div className={clsx(styles.startAdorment)}> {toastifyHelper[type]} </div>
-      <div className={styles[`${type}Text`]}>{message}</div>
-      <div className={clsx(styles.endAdorment, styles[`icon${type}`])}>
-        <CloseIcon />
+    <>
+      <div className={clsx(styles.toastify, styles[type], `${type}`)}>
+        <div className={clsx(styles.startAdorment)}> {toastifyHelper[type]} </div>
+        <div className={styles[`${type}Text`]}>{message}</div>
+        <div className={clsx(styles.endAdorment, styles[`icon${type}`])}>
+          <CloseIcon />
+        </div>
       </div>
-    </div>
+
+    </>
+
   );
 };

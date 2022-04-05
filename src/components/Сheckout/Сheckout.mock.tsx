@@ -1,4 +1,3 @@
 import { СheckoutProps } from './Сheckout';
 
-export const сheckoutPropsMocked: СheckoutProps = {
-};
+export const сheckoutPropsMocked: СheckoutProps = {};

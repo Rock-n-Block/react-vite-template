@@ -1,51 +1,9 @@
 @import '../../assets/styles/variables';
 @import '../../assets/styles/mixins';
 
-.card {
-  width: 350px;
-  height: 224px;
+.wrapper {
   background: #191a1d;
   border: 1px solid #1e2023;
-  box-sizing: border-box;
-  border-radius: 4px;
-  color: #f2f2f2;
-  &:hover {
-    border: 1px solid #8a7ff6;
-  }
-  .mainContainer {
-    width: 85%;
-    margin: 0 auto;
-    margin-top: 24px;
-
-    .titleWrapper {
-      display: flex;
-      margin-bottom: 17px;
-      gap: 24px;
-
-      .logo {
-        width: 48px;
-        height: 48px;
-        background: linear-gradient(90deg, #291aed 0%, #c59afc 100%);
-        border-radius: 50%;
-        position: relative;
-
-        img {
-          margin: auto;
-          position: absolute;
-          top: 0;
-          left: 0;
-          bottom: 0;
-          right: 0;
-        }
-      }
-      .title {
-        align-self: center;
-        order: 1;
-      }
-    }
-    .description {
-      color: #c4c4c4;
-      line-height: 20px;
-    }
-  }
+  display: inline-block;
+  padding: 34px;
 }

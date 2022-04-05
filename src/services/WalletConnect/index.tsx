@@ -11,7 +11,7 @@ import { Subscription } from 'rxjs';
 import { useShallowSelector } from 'hooks';
 import { Chains, State, UserState, WalletProviders } from 'types';
 
-import { WalletService } from '../walletService';
+import { WalletService } from '../WalletService';
 
 interface IContextValue {
   connect: (provider: WalletProviders, chain: Chains) => Promise<void>;
@@ -25,7 +25,11 @@ const WalletConnectContext: FC = ({ children }) => {
   const [currentSubsriber, setCurrentSubsciber] = useState<Subscription>();
   const WalletConnect = useMemo(() => new WalletService(), []);
   const dispatch = useDispatch();
-  const { address, provider: WalletProvider, chainType } = useShallowSelector<State, UserState>(userSelector.getUser);
+  const {
+    address,
+    provider: WalletProvider,
+    chainType,
+  } = useShallowSelector<State, UserState>(userSelector.getUser);
 
   const disconnect = useCallback(() => {
     dispatch(disconnectWalletState());
@@ -61,7 +65,11 @@ const WalletConnectContext: FC = ({ children }) => {
 
           if (accountInfo.address) {
             dispatch(updateUserState({ provider: accountInfo.type, address: accountInfo.address }));
-            toast.success(`Wallet connected: ${accountInfo.address.slice(0, 5)}...${accountInfo.address.slice(-5)}`);
+            toast.success(
+              `Wallet connected: ${accountInfo.address.slice(0, 5)}...${accountInfo.address.slice(
+                -5,
+              )}`,
+            );
           }
 
           setCurrentSubsciber(sub);
@@ -70,7 +78,11 @@ const WalletConnectContext: FC = ({ children }) => {
           // metamask doesn't installed,
           // redirect to download MM or open MM on mobile
           if (error.code === 4) {
-            window.open(`https://metamask.app.link/dapp/${window.location.hostname + window.location.pathname}/?utm_source=mm`);
+            window.open(
+              `https://metamask.app.link/dapp/${
+                window.location.hostname + window.location.pathname
+              }/?utm_source=mm`,
+            );
           }
         }
       }
@@ -85,7 +97,11 @@ const WalletConnectContext: FC = ({ children }) => {
     }
   }, [WalletProvider, address.length, connect]);
 
-  return <Web3Context.Provider value={{ connect, disconnect, walletService: WalletConnect }}>{children}</Web3Context.Provider>;
+  return (
+    <Web3Context.Provider value={{ connect, disconnect, walletService: WalletConnect }}>
+      {children}
+    </Web3Context.Provider>
+  );
 };
 
 const useWalletConnectorContext = () => useContext(Web3Context);

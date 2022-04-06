@@ -4,6 +4,8 @@
 @import './component-variables/switch';
 @import './component-variables/input';
 @import './component-variables/select';
+@import './component-variables/table';
+@import './component-variables/tooltip';
 @import './component-variables/main';
 @import './component-variables/slider';
 @import './component-variables/breadcrumbs';
@@ -19,7 +21,8 @@
 		$selectColorsDefault,
 		$sliderColorsDefault,
 		$breadcrumbsColorsDefault,
-
+		$tableColorsDefault,
+		$tooltipColorsDefault,
 	);
 
 	@each $key_name in $colors {
@@ -41,6 +44,8 @@
 		$sliderColorsLight,
 		$breadcrumbsColorsDefault,
 		$breadcrumbsColorsLight,
+		$tableColorsLight,
+		$tooltipColorsLight,
 	);
 
 	@each $key_name in $colors {

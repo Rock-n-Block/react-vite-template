@@ -6,6 +6,7 @@
 @import './component-variables/select';
 @import './component-variables/main';
 @import './component-variables/slider';
+@import './component-variables/breadcrumbs';
 
 :root {
 	$colors:(
@@ -17,6 +18,8 @@
 		$inputColorsDefault,
 		$selectColorsDefault,
 		$sliderColorsDefault,
+		$breadcrumbsColorsDefault,
+
 	);
 
 	@each $key_name in $colors {
@@ -35,7 +38,9 @@
 		$switchColorsLight,
 		$inputColorsLight,
 		$selectColorsLight,
-		sliderColorsLight,
+		$sliderColorsLight,
+		$breadcrumbsColorsDefault,
+		$breadcrumbsColorsLight,
 	);
 
 	@each $key_name in $colors {

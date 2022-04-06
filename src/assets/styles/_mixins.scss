@@ -45,22 +45,7 @@ $defaultSpacingUnit: 8;
   }
 }
 
-@mixin titleAuth {
-  margin-bottom: 35px;
-
-  font-size: 36px;
-  font-weight: 600;
-  color: $color-basic;
-  text-align: center;
-}
-
-@mixin arrowBack {
-  position: absolute;
-  top: 80px;
-  left: 80px;
-}
-
-@mixin dotDotDot($width) {
+@mixin noWrap($width) {
   max-width: $width;
   white-space: nowrap;
   overflow: hidden;
@@ -68,8 +53,7 @@ $defaultSpacingUnit: 8;
 }
 
 @mixin paginationItem {
-  width: 27px;
-  height: 27px;
+  // ????
   cursor: pointer;
 }
 

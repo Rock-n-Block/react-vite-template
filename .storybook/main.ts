@@ -33,7 +33,7 @@ module.exports = {
           },
           {
             find: 'config',
-            replacement: path.resolve(__dirname, '../src/congig'),
+            replacement: path.resolve(__dirname, '../src/config'),
           },
           {
             find: 'containers',

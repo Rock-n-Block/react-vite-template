@@ -1,7 +1,4 @@
-/* eslint-disable react/jsx-props-no-spreading,
-@typescript-eslint/no-explicit-any,
-react/destructuring-assignment */
-import React, { FC, ReactElement, useCallback, useMemo } from 'react';
+import React, { ReactElement, useCallback, useMemo } from 'react';
 import cn from 'clsx';
 import { ChevronDown } from 'assets/icons/icons';
 import RSelect, {
@@ -12,23 +9,29 @@ import RSelect, {
   MenuListProps,
   MenuProps,
   IndicatorsContainerProps,
-  Props as ReactSelectProps,
+  Props as ReactSelectProps, SingleValueProps, DropdownIndicatorProps,
 } from 'react-select';
+import { GroupBase } from 'react-select/dist/declarations/src/types';
+import { SelectComponents } from 'react-select/dist/declarations/src/components';
 import { Text } from '..';
 import styles from './styles.module.scss';
 import { CustomStyles, OptionType } from './Select.types';
 
 const ROOT = document.querySelector('body');
 
-export interface SelectProps extends ReactSelectProps {
+export interface SelectProps<
+  Option extends OptionType = OptionType,
+  IsMulti extends boolean = boolean,
+  Group extends GroupBase<Option> = GroupBase<Option>,
+> extends ReactSelectProps<Option, IsMulti, Group> {
   label?: string;
   customLabel?: ReactElement;
   error?: string;
-  value?: OptionType;
+  value?: Option;
   withErrorText?: boolean;
   disabled?: boolean;
   customStyles?: CustomStyles;
-  isMulti?: boolean;
+  isMulti?: IsMulti;
   classNameSelect?: string;
   classNameControl?: string;
   classNameOption?: string;
@@ -43,9 +46,10 @@ export interface SelectProps extends ReactSelectProps {
   classNameLabel?: string;
   classNameSelectWithErrorWrap?: string;
   withPortal?: boolean;
+  components?: SelectComponents<Option, IsMulti, Group>
 }
 
-export const Select: FC<SelectProps> = ({
+export const Select = ({
   name,
   options,
   value,
@@ -82,7 +86,7 @@ export const Select: FC<SelectProps> = ({
   withPortal = false,
   menuPortalTarget,
   components,
-}) => {
+}: SelectProps<OptionType, boolean, GroupBase<OptionType>>) => {
   const Control = useCallback((props: ControlProps<OptionType, boolean>) => (
     <component.Control
       {...props}
@@ -122,7 +126,6 @@ export const Select: FC<SelectProps> = ({
   const Placeholder = useCallback((props: PlaceholderProps<OptionType, boolean>) => (
     <component.Placeholder
       {...props}
-      // tag="span"
       isFocused={props.isFocused}
       className={cn(
         styles.placeholder,
@@ -142,7 +145,7 @@ export const Select: FC<SelectProps> = ({
     />
   ), [classNameMenuList]);
 
-  const Menu = useCallback((props: MenuProps) => (
+  const Menu = useCallback((props: MenuProps<OptionType, boolean, GroupBase<OptionType>>) => (
     <component.Menu
       {...props}
       className={cn(
@@ -174,13 +177,13 @@ export const Select: FC<SelectProps> = ({
     </component.ValueContainer>
   ), [Placeholder, classNamePlaceholder, classNameValueContainer]);
 
-  const SingleValue = useCallback((props: any) => (
+  const SingleValue = useCallback(({ children, ...props }: SingleValueProps<OptionType, boolean, GroupBase<OptionType>>) => (
     <component.SingleValue
       {...props}
       className={cn(styles.singleValue, classNameSingleValue)}
     >
       {props.data.icon && <img src={props.data.icon} alt="icon" className={styles.iconOption} />}
-      {props.children}
+      {children}
     </component.SingleValue>
   ), [classNameSingleValue]);
 
@@ -194,11 +197,13 @@ export const Select: FC<SelectProps> = ({
     />
   ), [classNameIndicatorsContainer]);
 
-  const DropdownIndicator = useCallback((props: any) => (
+  const DropdownIndicator = useCallback(({
+    selectProps,
+  }: DropdownIndicatorProps<OptionType, boolean, GroupBase<OptionType>>) => (
     <ChevronDown
       className={cn(
         styles.dropdownIndicator,
-        props.selectProps.menuIsOpen && styles.open,
+        selectProps.menuIsOpen && styles.open,
         classNameDropdownIndicator,
       )}
     />
@@ -217,7 +222,15 @@ export const Select: FC<SelectProps> = ({
     ? menuPortalTarget || ROOT
     : null;
 
-  const filterOptions = useMemo(() => options?.filter(({ value: optionValue }) => optionValue !== value?.value), [options, value]);
+  const filterOptions = useMemo(() => {
+    return options?.filter((option) => {
+      if ('value' in option) {
+        return option.value !== value?.value;
+      }
+
+      return true;
+    });
+  }, [options, value]);
 
   return (
     <div className={cn(styles.selectWrap, className)}>

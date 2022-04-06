@@ -61,19 +61,19 @@ export const Layout: FC<LayoutProps> = ({ children }) => {
     [isHomePage],
   );
 
-  const [islight, setIsLight] = useState(false);
+  const [isLight, setIsLight] = useState(false);
 
   const handleSwitchTheme = useCallback(() => {
-    setIsLight(!islight);
-  }, [islight]);
+    setIsLight(!isLight);
+  }, [isLight]);
 
   return (
-    <div className={clsx(styles.app, { [styles.light]: islight })}>
-      <Switch checked={islight} onChange={handleSwitchTheme} />
+    <div className={clsx(styles.app, { [styles.light]: isLight })}>
+      <Switch checked={isLight} onChange={handleSwitchTheme} />
       <i className="icon-checkmark" />
       <div className={styles.content}>
         <NotificationModal />
-        {+width < 800 && <MobileNavigation />}
+        {!!width && +width < 800 && <MobileNavigation />}
         {isNeedToShowHeaderFooter && (
           <Header
             address={address}

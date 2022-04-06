@@ -1,22 +1,21 @@
+@import '../../assets/styles/mixins';
+
 .mainContainer {
-  width: 85%;
   margin: 0 auto;
-  margin-top: 24px;
-  color: #f2f2f2;
-  width: 316px;
+  max-width: 316px;
   height: 190px;
 
   .titleWrapper {
     display: flex;
-    margin-bottom: 17px;
-    gap: 24px;
+    margin-bottom: spacing(2);
 
     .logo {
       width: 48px;
       height: 48px;
-      background: linear-gradient(90deg, #291aed 0%, #c59afc 100%);
+      background: var(--checkout-default-backrounnd);
       border-radius: 50%;
       position: relative;
+      margin-right: spacing(3);
 
       img {
         margin: auto;
@@ -30,11 +29,11 @@
     .title {
       align-self: center;
       order: 1;
+      color: var(--checkout-default-title-color);
     }
   }
   .description {
-    color: #c4c4c4;
+    color: var(--checkout-default-description-color);
     line-height: 20px;
   }
 }
-// }

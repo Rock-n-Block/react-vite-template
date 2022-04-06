@@ -2,8 +2,13 @@
 @import '../../assets/styles/mixins';
 
 .wrapper {
-  background: #191a1d;
-  border: 1px solid #1e2023;
+  background: var(--card-default-background);
+  border: 1px solid var(--card-default-border);
   display: inline-block;
-  padding: 34px;
+  padding: spacing(4.25);
+  border-radius: var(--card-default-border-radius);
+
+  &:hover {
+    border: 1px solid var(--card-default-hover);
+  }
 }

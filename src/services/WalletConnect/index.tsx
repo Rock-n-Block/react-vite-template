@@ -74,7 +74,7 @@ const WalletConnectContext: FC = ({ children }) => {
 
           setCurrentSubsciber(sub);
         } catch (error: any) {
-          console.log(error);
+          console.error(error);
           // metamask doesn't installed,
           // redirect to download MM or open MM on mobile
           if (error.code === 4) {

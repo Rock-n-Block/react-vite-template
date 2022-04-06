@@ -7,43 +7,49 @@
 @import './component-variables/table';
 @import './component-variables/tooltip';
 @import './component-variables/main';
+@import './component-variables//card';
+@import './component-variables//checkout';
 
 :root {
-	$colors:(
-		$mainColorsDefault,
-		$buttonColorsDefault,
-		$iconButtonColorsDefault,
-		$typographyColorsDefault,
-		$switchColorsDefault,
-		$inputColorsDefault,
-		$selectColorsDefault,
-		$tableColorsDefault,
-		$tooltipColorsDefault,
-	);
+  $colors: (
+    $mainColorsDefault,
+    $buttonColorsDefault,
+    $iconButtonColorsDefault,
+    $typographyColorsDefault,
+    $switchColorsDefault,
+    $inputColorsDefault,
+    $selectColorsDefault,
+    $tableColorsDefault,
+    $tooltipColorsDefault,
+    $cardColorDefault,
+    $checkoutColorDefault
+  );
 
-	@each $key_name in $colors {
-		@each $key_name_2, $value in $key_name {
-			--#{$key_name_2}: #{$value};
-		}
-	}
+  @each $key_name in $colors {
+    @each $key_name_2, $value in $key_name {
+      --#{$key_name_2}: #{$value};
+    }
+  }
 }
 
 .light {
-	$colors:(
-		$mainColorsLight,
-		$buttonColorsLight,
-		$iconButtonColorsLight,
-		$typographyColorsLight,
-		$switchColorsLight,
-		$inputColorsLight,
-		$selectColorsLight,
-		$tableColorsLight,
-		$tooltipColorsLight,
-	);
+  $colors: (
+    $mainColorsLight,
+    $buttonColorsLight,
+    $iconButtonColorsLight,
+    $typographyColorsLight,
+    $switchColorsLight,
+    $inputColorsLight,
+    $selectColorsLight,
+    $tableColorsLight,
+    $tooltipColorsLight,
+    $cardColorLight,
+    $checkoutColorLight
+  );
 
-	@each $key_name in $colors {
-		@each $key_name_2, $value in $key_name {
-			--#{$key_name_2}: #{$value};
-		}
-	}
+  @each $key_name in $colors {
+    @each $key_name_2, $value in $key_name {
+      --#{$key_name_2}: #{$value};
+    }
+  }
 }

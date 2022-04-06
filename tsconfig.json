@@ -17,7 +17,7 @@
     "noFallthroughCasesInSwitch": true,
     "baseUrl": "./src/"
   },
-  "include": ["vite-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": ["vite-env.d.ts", "**/*.ts", "**/*.tsx", "src/assets/icons/icons/components/buttonSecondaryFilledIcons"],
   "exclude": ["node_modules"],
   "files": ["src/types/globals.d.ts"]
 }

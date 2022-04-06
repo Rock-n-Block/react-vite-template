@@ -37,6 +37,15 @@ const Template: ComponentStory<typeof Button> = (args) => (
       <Button variant="text" {...args}>Button</Button>
       <Button variant="text" {...args} disabled>Button</Button>
     </div>
+    <div>
+      <Text>Filled secondary</Text>
+      <Button variant="filled-secondary" {...args} endAdorment={<StarIcon />}>Button</Button>
+      <Button variant="filled-secondary" {...args} startAdorment={<StarIcon />}>Button</Button>
+      <Button variant="filled-secondary" {...args} endAdorment={<StarIcon />} startAdorment={<StarIcon />}>Button</Button>
+      <Button variant="filled-secondary" {...args} disabled>Button</Button>
+      <Button variant="filled-secondary" {...args} startAdorment={<StarIcon />} disabled>Button</Button>
+
+    </div>
   </div>
 );
 export const Default = Template.bind({});

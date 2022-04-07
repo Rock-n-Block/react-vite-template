@@ -14,7 +14,7 @@ import cn from 'clsx';
 import styles from './styles.module.scss';
 
 export interface ButtonProps {
-  variant?: 'filled' | 'outlined' | 'outlined-secondary' | 'text';
+  variant?: 'filled' | 'outlined' | 'outlined-secondary' | 'text' | 'filled-secondary';
   size?: 'lg' | 'md' | 'sm';
   type?: 'button' | 'submit';
   disabled?: boolean;

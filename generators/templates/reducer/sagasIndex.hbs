@@ -1,0 +1,7 @@
+import { fork } from 'redux-saga/effects';
+
+import exampleSaga from './exampleSaga';
+
+export default function* {{ camelCase reducerName }}Sagas() {
+  yield fork(exampleSaga);
+}

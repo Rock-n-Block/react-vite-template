@@ -39,6 +39,15 @@ const Template: ComponentStory<typeof Button> = (args) => (
       Anchor
       <Button {...args} variant="filled" icon={<StarIcon />} href="https://google.com">Button</Button>
     </div>
+    <div>
+      <Text>Filled secondary button</Text>
+      <Button variant="filled-secondary" {...args} icon={<StarIcon />}>Button</Button>
+      <Button variant="filled-secondary" {...args} icon={<StarIcon />} disabled>Button</Button>
+      Link
+      <Button {...args} variant="filled-secondary" icon={<StarIcon />} to="/profile">Button</Button>
+      Anchor
+      <Button {...args} variant="filled-secondary" icon={<StarIcon />} href="https://google.com">Button</Button>
+    </div>
   </div>
 );
 export const Default = Template.bind({});

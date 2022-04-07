@@ -25,6 +25,7 @@ export default defineConfig({
   },
   build: {
     rollupOptions: {
+      // @ts-ignore
       plugins: [rollupNodePolyFill()],
     },
     commonjsOptions: {

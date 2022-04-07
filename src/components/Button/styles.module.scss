@@ -8,6 +8,7 @@
   @include flexbox();
   transition: ease-in-out 200ms;
 
+  
   &.outlined {
     background: var(--button-outlined-default-background);
     border: $button-border-width solid var(--button-outlined-default-border);
@@ -78,7 +79,63 @@
       }
     }
   }
+  &.filled-secondary {
+    border: $filled-secondary-button-border-width solid var(--filled-secondary-button-secondary-default-border);
+    color: var(--filled-secondary-button-secondary-default-font);
+    background: var(--filled-secondary-button-secondary-default-background);
+    .endAdorment > svg > path,
+    .startAdorment > svg > path {
+      fill: var(--filled-secondary-button-secondary-default-icon);
+      transition: ease-in-out 200ms;
+    }
+    &:hover {
+      color: var(--filled-secondary-button-secondary-hover-font);
+      border: $filled-secondary-button-border-width solid var(--filled-secondary-button-secondary-hover-border);
+      .endAdorment > svg > path,
+      .startAdorment > svg > path {
+        fill: var(--filled-secondary-button-secondary-hover-icon);
+      }
+    }
+    &:active {
+      color: var(--filled-secondary-button-secondary-active-font);
+      border: $filled-secondary-button-border-width solid var(--filled-secondary-button-secondary-active-border);
+      .endAdorment > svg > path,
+      .startAdorment > svg > path {
+        fill: var(--filled-secondary-button-secondary-active-icon);
+      }
+    }
+    &.disabled {
+      color: var(--filled-secondary-button-secondary-default-font);
+      background: var(--filled-secondary-button-secondary-default-background);
+      border: none;
 
+      &:hover{
+        color: var(--filled-secondary-button-secondary-default-font);
+        background: var(--filled-secondary-button-secondary-default-background);
+        border: none;
+        .endAdorment > svg > path,
+        .startAdorment > svg > path {
+        fill: var(--filled-secondary-button-secondary-default-icon);
+        }   
+      }
+      
+      &:active {
+        color: var(--filled-secondary-button-secondary-default-font);
+        background: var(--filled-secondary-button-secondary-default-background);
+        border: none;
+        .endAdorment > svg > path,
+        .startAdorment > svg > path {
+          background: var(--filled-secondary-button-secondary-default-background);
+          border: none;
+  
+          & > svg > path {
+            fill: var(--filled-secondary-button-secondary-default-icon);
+          }
+        }
+      }
+    
+  }
+  }
   &.text {
     background: transparent !important;
     color: var(--typography-default-color);
@@ -306,6 +363,56 @@
     }
   }
 
+  &.filled-secondary {
+    border: $filled-secondary-button-border-width solid var(--filled-secondary-button-secondary-default-border);
+    color: var(--filled-secondary-button-secondary-default-font);
+    background: var(--filled-secondary-button-secondary-default-background);
+    & > svg > path {
+      fill: var(--filled-secondary-button-secondary-default-icon);
+      transition: ease-in-out 200ms;
+    }
+    &:hover {
+      color: var(--filled-secondary-button-secondary-hover-font);
+      border: $filled-secondary-button-border-width solid var(--filled-secondary-button-secondary-hover-border);
+      &> svg > path {
+        fill: var(--filled-secondary-button-secondary-hover-icon);
+      }
+    }
+    &:active {
+      color: var(--filled-secondary-button-secondary-active-font);
+      border: $filled-secondary-button-border-width solid var(--filled-secondary-button-secondary-active-border);
+      &> svg > path {
+        fill: var(--filled-secondary-button-secondary-active-icon);
+      }
+    }
+    &.disabled {
+      background: var(--filled-secondary-button-secondary-default-background);
+      border: none;
+
+      & > svg > path {
+        fill: var(--filled-secondary-button-secondary-default-icon);
+      }
+      
+      &:hover {
+        background: var(--filled-secondary-button-secondary-default-background);
+        border: none;
+
+        & > svg > path {
+          fill: var(--filled-secondary-button-secondary-default-icon);
+        }
+      }
+  
+      &:active {
+        background: var(--filled-secondary-button-secondary-default-background);
+        border: none;
+
+        & > svg > path {
+          fill: var(--filled-secondary-button-secondary-default-icon);
+        }
+      }
+    
+  }
+}
   &.outlined-secondary {
     background: var(--icon-button-outlined-secondary-default-background);
     border: $button-border-width solid var(--icon-button-outlined-secondary-default-border);

@@ -11,7 +11,7 @@ import { Subscription } from 'rxjs';
 import { useShallowSelector } from 'hooks';
 import { Chains, State, UserState, WalletProviders } from 'types';
 
-import { WalletService } from '../walletService';
+import { WalletService } from '../WalletService';
 
 interface IContextValue {
   connect: (provider: WalletProviders, chain: Chains) => Promise<void>;

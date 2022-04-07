@@ -5,7 +5,7 @@ import userSelector from 'store/user/selectors';
 import { contractsConfig, ContractsNames } from 'config';
 import { getTokenAmountDisplay } from 'utils';
 
-import { Chains } from 'types';
+import { Chains, Erc20Abi } from 'types';
 import { updateUserState } from '../reducer';
 
 import { getTokenBalance } from '../actions';
@@ -17,7 +17,7 @@ export function* getTokenBalanceSaga({ type, payload: { web3Provider, chainType 
 
   const myAddress = yield select(userSelector.getProp('address'));
   try {
-    const tokenContract = yield new web3Provider.eth.Contract(tokenAbi, tokenAddress[Chains.bsc]);
+    const tokenContract: Erc20Abi = yield new web3Provider.eth.Contract(tokenAbi, tokenAddress[Chains.bsc]);
     if (myAddress) {
       const balance = yield call(tokenContract.methods.balanceOf(myAddress).call);
       const decimals = yield call(tokenContract.methods.decimals().call);

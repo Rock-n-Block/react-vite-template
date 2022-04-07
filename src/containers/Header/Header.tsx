@@ -1,7 +1,10 @@
 import { Button } from 'components';
-import { useCallback, VFC } from 'react';
+import { useCallback, useEffect, VFC } from 'react';
 import { Chains, WalletProviders } from 'types';
-
+import { tokenAction } from 'store/getToken/actions';
+import { useDispatch } from 'react-redux';
+import { useShallowSelector } from 'hooks';
+import tokenSelector from 'store/getToken/selectors';
 import s from './styles.module.scss';
 
 export interface HeaderProps {
@@ -15,7 +18,20 @@ export interface HeaderProps {
   chainType: 'testnet' | 'mainnet';
 }
 
-export const Header: VFC<HeaderProps> = ({ address, disconnect, onConnectWallet, onToggleChainType, chainType }) => {
+export const Header: VFC<HeaderProps> = ({
+  address,
+  disconnect,
+  onConnectWallet,
+  onToggleChainType,
+  chainType,
+}) => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(tokenAction());
+  }, []);
+
+  const { num } = useShallowSelector(tokenSelector.getDecimal);
+
   const handleChangeConnecting = useCallback(() => {
     if (!address.length) {
       onConnectWallet(WalletProviders.metamask, Chains.bsc);
@@ -26,7 +42,10 @@ export const Header: VFC<HeaderProps> = ({ address, disconnect, onConnectWallet,
 
   return (
     <header className={s.header}>
-      <Button onClick={handleChangeConnecting}>{address.length ? address : 'Connect Wallet'}</Button>
+      <Button onClick={handleChangeConnecting}>
+        {address.length ? address : 'Connect Wallet'}
+      </Button>
+      <div>{`Decimals: ${num}`}</div>
       <Button onClick={() => onToggleChainType()}>{chainType}</Button>
     </header>
   );

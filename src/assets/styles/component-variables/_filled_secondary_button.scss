@@ -22,14 +22,14 @@ $filledSecondaryButtonColorsDefault: (
 
 $filledSecondaryButtonColorsLight: (
   //default
-  "filled-secondary-button-secondary-default-font": #2E3A59,
-  "filled-secondary-button-secondary-default-icon": #6C778F,
-  "filled-secondary-button-secondary-default-border": #DFE3EC,
+  "filled-secondary-button-secondary-default-font": $colorDefaultFontLight,
+  "filled-secondary-button-secondary-default-icon": $colorDefaultIconLight,
+  "filled-secondary-button-secondary-default-border": $colorDefaultBorderLifgt,
   "filled-secondary-button-secondary-default-background": $colorWhite,
   // hover
   "filled-secondary-button-secondary-hover-font": $colorGreenAcid,
   "filled-secondary-button-secondary-hover-icon": $colorGreenAcid,
-  "filled-secondary-button-secondary-hover-border": #DFE3EC,
+  "filled-secondary-button-secondary-hover-border": $colorDefaultBorderLifgt,
   "filled-secondary-button-secondary-hover-background": $colorWhite,
   // active
   "filled-secondary-button-secondary-active-font": $colorGreenAcid,

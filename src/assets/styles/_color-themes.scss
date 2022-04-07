@@ -9,6 +9,7 @@
 @import './component-variables/main';
 @import './component-variables/slider';
 @import './component-variables/breadcrumbs';
+@import './component-variables/filled_secondary_button';
 
 :root {
 	$colors:(
@@ -21,6 +22,7 @@
 		$selectColorsDefault,
 		$sliderColorsDefault,
 		$breadcrumbsColorsDefault,
+		$filledSecondaryButtonColorsDefault,
 		$tableColorsDefault,
 		$tooltipColorsDefault,
 	);
@@ -44,6 +46,7 @@
 		$sliderColorsLight,
 		$breadcrumbsColorsDefault,
 		$breadcrumbsColorsLight,
+		$filledSecondaryButtonColorsLight,
 		$tableColorsLight,
 		$tooltipColorsLight,
 	);

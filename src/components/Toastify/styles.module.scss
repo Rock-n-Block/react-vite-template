@@ -1,24 +1,26 @@
+@import 'assets/styles/component-variables/color-constants';
+
 .success {
   background-image: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
   &Text {
-    color: rgb(43, 43, 43);
+    color: $colorPitchBlack;
   }
 }
 .info {
   background-image: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);
   &Text {
-    color: rgb(43, 43, 43);
+    color: $colorPitchBlack;
   }
 }
 .warning {
   background-image: linear-gradient(to right, #fa709a 0%, #fee140 100%);
   &Text {
-    color: rgb(43, 43, 43);
+    color: $colorPitchBlack;
   }
 }
 .error {
   background-image: linear-gradient(to top, #ff0844 0%, #ffb199 100%);
   &Text {
-    color: rgb(43, 43, 43);
+    color: $colorPitchBlack;
   }
 }

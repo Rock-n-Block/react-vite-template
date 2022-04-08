@@ -1,0 +1,19 @@
+@import '/src/assets/styles/component-variables/color-constants';
+
+$checkboxColorsDefault: (
+  // default
+  "checkbox-default-border-color": $colorGullGrey,
+  "checkbox-default-background-color": $colorGrey600,
+  // hover
+  "checkbox-hover-border-color": $colorJasmineYellow,
+  "checkbox-hover-background-color": $colorGrey600,
+  // checked
+  "checkbox-checked-border-color": $colorJasmineYellow,
+  "checkbox-checked-background-color": $colorJasmineYellow,
+  "checkbox-checked-icon-color": $colorBerryHead,
+  
+
+);
+
+$checkboxColorsLight: (
+);

@@ -1,0 +1,60 @@
+@import '../../assets/styles/variables';
+@import '../../assets/styles/mixins';
+@import '/src/assets/styles/component-variables/color-constants';
+
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+.label {
+  font-family: system-ui, sans-serif;
+  font-size: 2rem;
+  font-weight: bold;
+  line-height: 1.1;
+  display: grid;
+  grid-template-columns: 1em auto;
+  gap: 0.5em;
+}
+
+.checkbox {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  background: var(--checkbox-default-background-color);
+  border: 1px solid var(--checkbox-default-border-color);
+  border-radius: 3px;
+  // transform: translateY(-0.075em);
+  display: grid;
+  place-content: center;
+  &:checked {
+    transition: 60ms;
+    background: var(--checkbox-checked-background-color);
+    border: var(--checkbox-checked-border-color);
+  }
+  
+}
+
+.checkbox::before {
+  content: "";
+  width: 20px;
+  height: 20px;
+  border-radius: 3px;
+  background: var(--checkbox-checked-icon-color) !important;
+  clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+  transform: scale(0);
+  // transform-origin: bottom left;
+  transition: 60ms transform ease-in-out;
+  // box-shadow: inset 1em 1em var(--form-control-color);
+  /* Windows High Contrast Mode */
+  background-color: CanvasText;
+}
+.checkbox:hover {
+  border: 1px solid var(--checkbox-hover-border-color);
+  transition: 60ms;
+}
+
+.checkbox:checked::before {
+  transform: scale(0.5);
+}
+
+

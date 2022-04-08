@@ -13,6 +13,7 @@
 @import './component-variables/filled-secondary-button';
 @import './component-variables/card';
 @import './component-variables/checkout';
+@import './component-variables/checkbox';
 
 :root {
   $colors: (
@@ -29,6 +30,7 @@
     $checkoutColorDefault,
     $toastifyColorsDefault,
     $filledSecondaryButtonColorsDefault,
+    $checkboxColorsDefault,
   );
   @each $key_name in $colors {
     @each $key_name_2, $value in $key_name {
@@ -50,6 +52,7 @@
     $cardColorLight,
     $checkoutColorLight,
     $filledSecondaryButtonColorsLight,
+    $checkboxColorsDefault
   );
   @each $key_name in $colors {
     @each $key_name_2, $value in $key_name {

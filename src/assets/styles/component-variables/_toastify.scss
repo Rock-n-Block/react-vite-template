@@ -1,50 +1,52 @@
+@import './color-constants';
+
 $toastify-border-width: 1px;
 
 
 $toastifyColorsDefault: (
   // main colors
-  "toastify-default-color": #191A1D,
-  "toastify-secondary-color": #64656A,
+  "toastify-default-color": $colorBlack700,
+  "toastify-secondary-color": $colorGrey700,
   // info colors
-  "toastify-info-color": #64656A,
-  "toastify-info-font-color": #64656A,
-  "toastify-info-icon-color": #64656A,
+  "toastify-info-color": $colorGrey700,
+  "toastify-info-font-color": $colorGrey700,
+  "toastify-info-icon-color": $colorGrey700,
   // warning colors
-  "toastify-warning-color": #F2C94C,
-  "toastify-warning-font-color": #F2C94C,
+  "toastify-warning-color": $colorYellowMediumLightShade,
+  "toastify-warning-font-color": $colorYellowMediumLightShade,
 
   // error colors
-  "toastify-error-color": #FF4040,
-  "toastify-error-font-color": #FF4040,
+  "toastify-error-color": $colorRed,
+  "toastify-error-font-color": $colorRed,
 
   // success colors
-  "toastify-success-color": #6CDC13,
-  "toastify-success-font-color": #6CDC13, 
-  "toastify-success-icon-color": #8A7FF6,
+  "toastify-success-color": $colorGreen,
+  "toastify-success-font-color": $colorGreen, 
+  "toastify-success-icon-color": $colorGreenAcid,
 
   
 );
 
 $toastifyColorsLight: (
   // main colors
-  "toastify-default-color": #FFFFFF,
-  "toastify-secondary-color": #6FB0FE,
+  "toastify-default-color": $colorWhite,
+  "toastify-secondary-color": $colorBlue,
   // info colors
-  "toastify-info-color": #6FB0FE,
-  "toastify-info-icon-color": #6FB0FE,
-  "toastify-info-font-color": #2E3A59, 
+  "toastify-info-color": $colorBlue,
+  "toastify-info-icon-color": $colorBlue,
+  "toastify-info-font-color": $colorDarkBlue, 
 
   //warning colors 
-  "toastify-warning-color": #F2C94C,
-  "toastify-warning-font-color": #2E3A59, 
+  "toastify-warning-color": $colorYellowMediumLightShade,
+  "toastify-warning-font-color": $colorDarkBlue, 
 
   // error colors
-  "toastify-error-color": #FF4040,
-  "toastify-error-font-color": #2E3A59,
+  "toastify-error-color": $colorRed,
+  "toastify-error-font-color": $colorDarkBlue,
 
   // success colors
-  "toastify-success-color": #6CDC13,
-  "toastify-success-font-color": #2E3A59,
-  "toastify-success-icon-color": #6CDC13,
+  "toastify-success-color": $colorGreen,
+  "toastify-success-font-color": $colorDarkBlue,
+  "toastify-success-icon-color": $colorGreen,
 
 );

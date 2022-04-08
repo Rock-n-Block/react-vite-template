@@ -10,52 +10,50 @@
 @import './component-variables/slider';
 @import './component-variables/breadcrumbs';
 @import './component-variables/toastify';
-@import './component-variables/filled_secondary_button';
-@import './component-variables//card';
-@import './component-variables//checkout';
+@import './component-variables/filled-secondary-button';
+@import './component-variables/card';
+@import './component-variables/checkout';
 
 :root {
-	$colors:(
-		$mainColorsDefault,
-		$buttonColorsDefault,
-		$iconButtonColorsDefault,
-		$typographyColorsDefault,
-		$switchColorsDefault,
-		$inputColorsDefault,
-		$selectColorsDefault,
-		$sliderColorsDefault,
-		$breadcrumbsColorsDefault,
-		$filledSecondaryButtonColorsDefault,
-		$tableColorsDefault,
-		$tooltipColorsDefault,
-	);
-
-	@each $key_name in $colors {
-		@each $key_name_2, $value in $key_name {
-			--#{$key_name_2}: #{$value};
-		}
-	}
+  $colors: (
+    $mainColorsDefault,
+    $buttonColorsDefault,
+    $iconButtonColorsDefault,
+    $typographyColorsDefault,
+    $switchColorsDefault,
+    $inputColorsDefault,
+    $selectColorsDefault,
+    $tableColorsDefault,
+    $tooltipColorsDefault,
+    $cardColorDefault,
+    $checkoutColorDefault,
+    $toastifyColorsDefault,
+    $filledSecondaryButtonColorsDefault,
+  );
+  @each $key_name in $colors {
+    @each $key_name_2, $value in $key_name {
+      --#{$key_name_2}: #{$value};
+    }
+  }
 }
 .light {
-	$colors:(
-		$mainColorsLight,
-		$buttonColorsLight,
-		$iconButtonColorsLight,
-		$typographyColorsLight,
-		$switchColorsLight,
-		$inputColorsLight,
-		$selectColorsLight,
-		$sliderColorsLight,
-		$breadcrumbsColorsDefault,
-		$breadcrumbsColorsLight,
-		$filledSecondaryButtonColorsLight,
-		$tableColorsLight,
-		$tooltipColorsLight,
-	);
-
-	@each $key_name in $colors {
-		@each $key_name_2, $value in $key_name {
-			--#{$key_name_2}: #{$value};
-		}
-	}
+  $colors: (
+    $mainColorsLight,
+    $buttonColorsLight,
+    $iconButtonColorsLight,
+    $typographyColorsLight,
+    $switchColorsLight,
+    $inputColorsLight,
+    $selectColorsLight,
+    $tableColorsLight,
+    $tooltipColorsLight,
+    $cardColorLight,
+    $checkoutColorLight,
+    $filledSecondaryButtonColorsLight,
+  );
+  @each $key_name in $colors {
+    @each $key_name_2, $value in $key_name {
+      --#{$key_name_2}: #{$value};
+    }
+  }
 }

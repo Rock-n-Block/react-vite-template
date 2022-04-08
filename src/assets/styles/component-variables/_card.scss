@@ -1,11 +1,13 @@
+@import './color-constants';
+
 $cardColorDefault: (
-  'card-default-background': #191a1d,
-  'card-default-border': #1e2023,
-  'card-default-hover': #8a7ff6,
+  'card-default-background': $colorBlack700,
+  'card-default-border': $colorBlack600,
+  'card-default-hover': $colorGreenAcid,
   'card-default-border-radius': 4px,
 );
 $cardColorLight: (
-  'card-default-background': #ffffff,
+  'card-default-background': $colorWhite,
   'card-default-border-radius': 16px,
-  'card-default-border': #dfe3ec,
+  'card-default-border': $colorGlacierWhite,
 );

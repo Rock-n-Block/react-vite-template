@@ -15,9 +15,7 @@ export interface HeaderProps {
   chainType: 'testnet' | 'mainnet';
 }
 
-export const Header: VFC<HeaderProps> = ({ address, disconnect, onConnectWallet, onToggleChainType, isHomePage, isUserInfoLoading, chainType }) => {
-  console.debug(isHomePage, isUserInfoLoading);
-
+export const Header: VFC<HeaderProps> = ({ address, disconnect, onConnectWallet, onToggleChainType, chainType }) => {
   const handleChangeConnecting = useCallback(() => {
     if (!address.length) {
       onConnectWallet(WalletProviders.metamask, Chains.bsc);

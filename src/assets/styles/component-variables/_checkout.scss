@@ -1,0 +1,11 @@
+@import './color-constants';
+
+$checkoutColorDefault: (
+  'checkout-default-title-color': $colorGrey500,
+  'checkout-default-description-color': $colorGrey600,
+  'checkout-default-backrounnd': $colorGreenGradient,
+);
+$checkoutColorLight: (
+  'checkout-default-title-color': $colorOxfordBlue,
+  'checkout-default-description-color': $colorDarkBlue,
+);

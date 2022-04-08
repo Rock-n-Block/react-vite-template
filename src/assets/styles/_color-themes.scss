@@ -4,43 +4,54 @@
 @import './component-variables/switch';
 @import './component-variables/input';
 @import './component-variables/select';
+@import './component-variables/table';
+@import './component-variables/tooltip';
 @import './component-variables/main';
-@import './component-variables/filled_secondary_button';
+@import './component-variables/toastify';
+@import './component-variables/filled-secondary-button';
+@import './component-variables/card';
+@import './component-variables/checkout';
 
 :root {
-	$colors:(
-		$mainColorsDefault,
-		$buttonColorsDefault,
-		$iconButtonColorsDefault,
-		$typographyColorsDefault,
-		$switchColorsDefault,
-		$inputColorsDefault,
-		$selectColorsDefault,
-		$filledSecondaryButtonColorsDefault,
-	);
-
-	@each $key_name in $colors {
-		@each $key_name_2, $value in $key_name {
-			--#{$key_name_2}: #{$value};
-		}
-	}
+  $colors: (
+    $mainColorsDefault,
+    $buttonColorsDefault,
+    $iconButtonColorsDefault,
+    $typographyColorsDefault,
+    $switchColorsDefault,
+    $inputColorsDefault,
+    $selectColorsDefault,
+    $tableColorsDefault,
+    $tooltipColorsDefault,
+    $cardColorDefault,
+    $checkoutColorDefault,
+    $toastifyColorsDefault,
+    $filledSecondaryButtonColorsDefault,
+  );
+  @each $key_name in $colors {
+    @each $key_name_2, $value in $key_name {
+      --#{$key_name_2}: #{$value};
+    }
+  }
 }
-
 .light {
-	$colors:(
-		$mainColorsLight,
-		$buttonColorsLight,
-		$iconButtonColorsLight,
-		$typographyColorsLight,
-		$switchColorsLight,
-		$inputColorsLight,
-		$selectColorsLight,
-		$filledSecondaryButtonColorsLight,
-	);
-
-	@each $key_name in $colors {
-		@each $key_name_2, $value in $key_name {
-			--#{$key_name_2}: #{$value};
-		}
-	}
+  $colors: (
+    $mainColorsLight,
+    $buttonColorsLight,
+    $iconButtonColorsLight,
+    $typographyColorsLight,
+    $switchColorsLight,
+    $inputColorsLight,
+    $selectColorsLight,
+    $tableColorsLight,
+    $tooltipColorsLight,
+    $cardColorLight,
+    $checkoutColorLight,
+    $filledSecondaryButtonColorsLight,
+  );
+  @each $key_name in $colors {
+    @each $key_name_2, $value in $key_name {
+      --#{$key_name_2}: #{$value};
+    }
+  }
 }

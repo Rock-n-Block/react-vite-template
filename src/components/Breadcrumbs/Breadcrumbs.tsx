@@ -23,10 +23,10 @@ export const Breadcrumbs: VFC<BreadcrumbsProps> = ({ paths }) => {
             <li
               key={path}
               className={
-              // eslint-disable-next-line no-nested-ternary
-              index === 0
-                ? cn(styles.breadcrumbFirst)
-                : (index === paths.length - 1 ? cn(styles.breadcrumbLast) : cn(styles.breadcrumb))
+                cn(
+                  { [styles.breadcrumbFirst]: !index }, { [styles.breadcrumbLast]: paths.length - 1 === index },
+                  { [styles.breadcrumb]: index && paths.length - 1 !== index },
+                )
             }
             >
               <NavLink

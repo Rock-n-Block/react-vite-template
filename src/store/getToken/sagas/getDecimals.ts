@@ -4,13 +4,6 @@ import apiActions from 'store/api/actions';
 import Web3 from 'web3';
 import { erc20Abi } from 'config/abi';
 import { getDecimalOfToken } from '../reducer';
-// import userSelector from 'store/user/selectors';
-
-// import { contractsConfig, ContractsNames } from 'config';
-// import { getTokenAmountDisplay } from 'utils';
-
-// import { Chains } from 'types';
-// import { updateUserState } from '../reducer';
 
 import { tokenAction } from '../actions';
 import actionTypes from '../actionTypes';

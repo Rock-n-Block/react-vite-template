@@ -9,7 +9,10 @@
 @import './component-variables/main';
 @import './component-variables/slider';
 @import './component-variables/breadcrumbs';
+@import './component-variables/toastify';
 @import './component-variables/filled_secondary_button';
+@import './component-variables//card';
+@import './component-variables//checkout';
 
 :root {
 	$colors:(
@@ -33,7 +36,6 @@
 		}
 	}
 }
-
 .light {
 	$colors:(
 		$mainColorsLight,

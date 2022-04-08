@@ -17,6 +17,8 @@ import { useDispatch } from 'react-redux';
 import { updateUserState } from 'store/user/reducer';
 import clsx from 'clsx';
 import { Switch } from 'components/Switch';
+import { Button } from 'components';
+import setNotification from 'utils/setNotification';
 import styles from './styles.module.scss';
 
 export interface LayoutProps {
@@ -69,6 +71,13 @@ export const Layout: FC<LayoutProps> = ({ children }) => {
 
   return (
     <div className={clsx(styles.app, { [styles.light]: isLight })}>
+      <Button onClick={() => setNotification({
+        type: 'info',
+        message: 'Test',
+      })}
+      >
+        Toastify
+      </Button>
       <Switch checked={isLight} onChange={handleSwitchTheme} />
       <i className="icon-checkmark" />
       <div className={styles.content}>

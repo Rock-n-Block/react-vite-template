@@ -1,53 +1,33 @@
-.сheckout {
-  width: 350px;
-  height: 224px;
-  background: #191a1d;
-  border: 1px solid #1e2023;
-  box-sizing: border-box;
-  border-radius: 4px;
-  color: #f2f2f2;
-  &:hover {
-    border: 1px solid #8a7ff6;
-  }
-  .mainContainer {
-    width: 85%;
-    margin: 0 auto;
-    margin-top: 24px;
+@import '../../assets/styles/mixins';
 
-    .titleWrapper {
-      display: flex;
-      margin-bottom: 17px;
+.titleWrapper {
+  display: flex;
 
-      .logo {
-        width: 48px;
-        height: 48px;
-        background: linear-gradient(90deg, #291aed 0%, #c59afc 100%);
-        border-radius: 50%;
-        position: relative;
+  .logo {
+    width: 48px;
+    height: 48px;
+    background: var(--checkout-default-backrounnd);
+    border-radius: 50%;
+    position: relative;
+    margin-right: spacing(3);
 
-        img {
-          position: absolute;
-        }
-        img:first-child {
-          top: 9px;
-          left: 14px;
-        }
-        img:last-child {
-          top: 26px;
-          left: 14px;
-        }
-      }
-      .title {
-        align-self: center;
-        margin-left: 23px;
-        order: 1;
-      }
-    }
-    .description {
-      color: #c4c4c4;
-      line-height: 20px;
-      font-family: 'Inter';
-      font-style: normal;
+    img {
+      margin: auto;
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
     }
   }
+  .title {
+    align-self: center;
+    order: 1;
+    color: var(--checkout-default-title-color);
+  }
+}
+.description {
+  color: var(--checkout-default-description-color);
+  line-height: 20px;
+  padding-top: spacing(2);
 }

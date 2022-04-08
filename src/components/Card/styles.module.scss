@@ -1,0 +1,17 @@
+@import '../../assets/styles/variables';
+@import '../../assets/styles/mixins';
+
+.wrapper {
+  background: var(--card-default-background);
+  border: 1px solid var(--card-default-border);
+  display: inline-block;
+  padding: spacing(4.25);
+  border-radius: var(--card-default-border-radius);
+  margin: 0 auto;
+  max-width: 350px;
+  min-height: 224px;
+
+  &:hover {
+    border: 1px solid var(--card-default-hover);
+  }
+}

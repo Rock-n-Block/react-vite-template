@@ -1,3 +1,12 @@
 @import './variables';
 @import './normalize';
 @import './mixins';
+
+.Toastify__toast-container {
+    width: fit-content;
+}
+.Toastify__toast {
+    width: 100%;
+    background: transparent;
+    box-shadow: none;
+}

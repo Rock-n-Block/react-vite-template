@@ -11,6 +11,10 @@ export default {
 const Template: ComponentStory<typeof Checkbox> = () => (
   <>
     <Checkbox />
+    <Checkbox />
+
+    <Checkbox />
+    <Checkbox />
 
   </>
 );

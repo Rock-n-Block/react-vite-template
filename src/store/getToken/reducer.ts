@@ -1,25 +1,21 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { TokenState } from 'types';
 
-// import { UserState } from 'types';
-
-interface DecimalsState {
-  num: string;
-}
-const initialState: DecimalsState = {
-  num: '0',
+const initialState: TokenState = {
+  decimals: '0',
 };
 
-export const decimalsReducer = createSlice({
+export const tokenReducer = createSlice({
   name: 'user',
   initialState,
   reducers: {
-    getDecimalOfToken: (state, action: PayloadAction<string>) => ({
+    setDecimals: (state, action: PayloadAction<string>) => ({
       ...state,
-      num: action.payload,
+      decimals: action.payload,
     }),
   },
 });
 
-export const { getDecimalOfToken } = decimalsReducer.actions;
+export const { setDecimals } = tokenReducer.actions;
 
-export default decimalsReducer.reducer;
+export default tokenReducer.reducer;

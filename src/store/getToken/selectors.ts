@@ -1,5 +1,5 @@
-import type { State, DecimalsState } from 'types';
+import type { State, TokenState } from 'types';
 
 export default {
-  getDecimal: (state: State): DecimalsState => state.decimals,
+  getDecimal: (state: State): TokenState => state.decimals,
 };

@@ -1,3 +1,3 @@
-export type DecimalsState = {
-  num: string;
-};
+export interface TokenState {
+  decimals: string;
+}

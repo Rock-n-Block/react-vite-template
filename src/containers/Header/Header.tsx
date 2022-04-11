@@ -1,7 +1,7 @@
 import { Button } from 'components';
 import { useCallback, useEffect, VFC } from 'react';
 import { Chains, WalletProviders } from 'types';
-import { tokenAction } from 'store/getToken/actions';
+import { getDecimals } from 'store/getToken/actions';
 import { useDispatch } from 'react-redux';
 import { useShallowSelector } from 'hooks';
 import tokenSelector from 'store/getToken/selectors';
@@ -27,10 +27,10 @@ export const Header: VFC<HeaderProps> = ({
 }) => {
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(tokenAction());
+    dispatch(getDecimals());
   }, []);
 
-  const { num } = useShallowSelector(tokenSelector.getDecimal);
+  const { decimals } = useShallowSelector(tokenSelector.getDecimal);
 
   const handleChangeConnecting = useCallback(() => {
     if (!address.length) {
@@ -45,7 +45,7 @@ export const Header: VFC<HeaderProps> = ({
       <Button onClick={handleChangeConnecting}>
         {address.length ? address : 'Connect Wallet'}
       </Button>
-      <div>{`Decimals: ${num}`}</div>
+      <div>{`Decimals: ${decimals}`}</div>
       <Button onClick={() => onToggleChainType()}>{chainType}</Button>
     </header>
   );

@@ -28,13 +28,13 @@ export const Checkbox: VFC<CheckboxProps> = ({ id, className, checked, onChange,
       >
         <input
           type="checkbox"
-          className={cn(styles.checkbox)}
+          className={styles.checkbox}
           id={id}
           name={name}
           onChange={onChange}
           checked={checked}
         />
-        <Text className={cn(styles.text)}>
+        <Text className={styles.text}>
           {label}
         </Text>
       </label>

@@ -9,6 +9,7 @@
   @include flexbox();
   width: fit-content;
   height: fit-content;
+  cursor: pointer;
   &.top {
     flex-direction: column-reverse;
   }

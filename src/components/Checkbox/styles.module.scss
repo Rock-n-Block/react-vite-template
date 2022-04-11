@@ -1,17 +1,33 @@
 @import '../../assets/styles/variables';
 @import '../../assets/styles/mixins';
-@import '/src/assets/styles/component-variables/color-constants';
+
+.checkboxContainer {
+  // @include flexbox(flex-start, flex-start);
+  // height: fit-content;
+  // width: fit-content;
+}
 
 *:before,
 *:after {
   box-sizing: border-box;
 }
 .label {
-  display: flex;
+  @include flexbox();
   width: fit-content;
   height: fit-content;
+  &.top {
+    flex-direction: column-reverse;
+  }
+  &.left {
+    flex-direction: row-reverse;
+  }
+  &.bottom {
+    flex-direction: column;
+  }
+  &.right {
+    flex-direction: row;
+  }
 }
-
 .checkbox {
   appearance: none;
   width: 20px;
@@ -19,7 +35,7 @@
   background: var(--checkbox-default-background-color);
   border: 1px solid var(--checkbox-default-border-color);
   border-radius: 3px;
-  display: flex;
+  @include flexbox();
   justify-content: center;
   align-items: center;
   &:hover {
@@ -46,7 +62,6 @@
     transform: scale(0);
     transition: 60ms;
   }
-  
 }
 
 

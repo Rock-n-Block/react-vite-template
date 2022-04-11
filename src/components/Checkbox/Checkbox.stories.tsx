@@ -10,12 +10,7 @@ export default {
 
 const Template: ComponentStory<typeof Checkbox> = () => (
   <>
-    <Checkbox />
-    <Checkbox />
-
-    <Checkbox />
-    <Checkbox />
-
+    <Checkbox id="123" label="13232132131" labelPosition="bottom" />
   </>
 );
 export const Default = Template.bind({});

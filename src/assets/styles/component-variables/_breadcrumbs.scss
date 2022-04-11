@@ -1,16 +1,15 @@
-
-
+@import './color-constants';
 $breadcrumbsColorsDefault: (
-  "breadcrumbs-default-color": #64656A,
-  "breadcrumbs-default-last-item-color": #F2F2F2,
-  "breadcrumbs-icon-default-color": #F2F2F2,
-  "breadcrumbs-hover-color": #8A7FF6,
+  "breadcrumbs-default-color": $colorGrey700,
+  "breadcrumbs-default-last-item-color": $colorGrey500,
+  "breadcrumbs-icon-default-color": $colorGrey500,
+  "breadcrumbs-hover-color": $colorGreenAcid,
 
 );
 
 $breadcrumbsColorsLight: (
-  "breadcrumbs-default-color": #6C778F,
-  "breadcrumbs-default-last-item-color": #6C778F,
-  "breadcrumbs-icon-default-color": #DFE3EC,
-  "breadcrumbs-hover-color": #8A7FF6,
+  "breadcrumbs-default-color": $colorMediumBlue,
+  "breadcrumbs-default-last-item-color": $colorMediumBlue,
+  "breadcrumbs-icon-default-color": $colorGlacierWhite,
+  "breadcrumbs-hover-color": $colorGreenAcid,
 );

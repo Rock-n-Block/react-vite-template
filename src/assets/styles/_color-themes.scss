@@ -31,6 +31,7 @@
     $toastifyColorsDefault,
     $filledSecondaryButtonColorsDefault,
     $checkboxColorsDefault,
+    $breadcrumbsColorsDefault,
   );
   @each $key_name in $colors {
     @each $key_name_2, $value in $key_name {
@@ -52,7 +53,8 @@
     $cardColorLight,
     $checkoutColorLight,
     $filledSecondaryButtonColorsLight,
-    $checkboxColorsDefault
+    $checkboxColorsDefault,
+    $breadcrumbsColorsDefault,
   );
   @each $key_name in $colors {
     @each $key_name_2, $value in $key_name {

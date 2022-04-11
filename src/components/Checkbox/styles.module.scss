@@ -1,12 +1,6 @@
 @import '../../assets/styles/variables';
 @import '../../assets/styles/mixins';
 
-.checkboxContainer {
-  // @include flexbox(flex-start, flex-start);
-  // height: fit-content;
-  // width: fit-content;
-}
-
 *:before,
 *:after {
   box-sizing: border-box;
@@ -56,7 +50,7 @@
     background-image: url('/src/assets/icons/icons/components/Checkbox/IconCheckmark.svg');
     background-size: auto auto;
     background-repeat: no-repeat;
-    content:"";
+    content: "";
     width: 8px;
     height: 8px;
     transform: scale(0);

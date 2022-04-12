@@ -6,7 +6,7 @@
   .logo {
     width: 48px;
     height: 48px;
-    background: var(--checkout-default-backrounnd);
+    background: var(--contractCard-default-backrounnd);
     border-radius: 50%;
     position: relative;
     margin-right: spacing(3);
@@ -23,11 +23,11 @@
   .title {
     align-self: center;
     order: 1;
-    color: var(--checkout-default-title-color);
+    color: var(--contractCard-default-title-color);
   }
 }
 .description {
-  color: var(--checkout-default-description-color);
+  color: var(--contractCard-default-description-color);
   line-height: 20px;
   padding-top: spacing(2);
 }

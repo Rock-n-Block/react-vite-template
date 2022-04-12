@@ -204,6 +204,7 @@ export const Table: FC<TableProps> = React.forwardRef<HTMLDivElement, TableProps
           <div ref={refEndTable} />
 
           {isPaginationVisible && (
+          // @ts-ignore
           <ReactPaginate
             forcePage={forcePage || pageIndex}
             previousLabel={<ArrowLabel />}

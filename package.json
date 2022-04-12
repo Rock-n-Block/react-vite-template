@@ -32,6 +32,7 @@
     "axios": "^0.24.0",
     "bignumber.js": "^9.0.2",
     "clsx": "^1.1.1",
+    "formik": "^2.2.9",
     "jest": "^27.5.1",
     "node-sass": "^7.0.1",
     "rc-dialog": "^8.6.0",
@@ -50,7 +51,8 @@
     "use-debounce": "^7.0.1",
     "uuid": "^8.3.2",
     "web3": "^1.2.11",
-    "web3-utils": "^1.7.0"
+    "web3-utils": "^1.7.0",
+    "yup": "^0.32.11"
   },
   "devDependencies": {
     "@esbuild-plugins/node-globals-polyfill": "^0.1.1",

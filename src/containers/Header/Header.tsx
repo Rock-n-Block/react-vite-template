@@ -15,7 +15,13 @@ export interface HeaderProps {
   chainType: 'testnet' | 'mainnet';
 }
 
-export const Header: VFC<HeaderProps> = ({ address, disconnect, onConnectWallet, onToggleChainType, chainType }) => {
+export const Header: VFC<HeaderProps> = ({
+  address,
+  disconnect,
+  onConnectWallet,
+  onToggleChainType,
+  chainType,
+}) => {
   const handleChangeConnecting = useCallback(() => {
     if (!address.length) {
       onConnectWallet(WalletProviders.metamask, Chains.bsc);
@@ -26,7 +32,9 @@ export const Header: VFC<HeaderProps> = ({ address, disconnect, onConnectWallet,
 
   return (
     <header className={s.header}>
-      <Button onClick={handleChangeConnecting}>{address.length ? address : 'Connect Wallet'}</Button>
+      <Button onClick={handleChangeConnecting}>
+        {address.length ? address : 'Connect Wallet'}
+      </Button>
       <Button onClick={() => onToggleChainType()}>{chainType}</Button>
     </header>
   );

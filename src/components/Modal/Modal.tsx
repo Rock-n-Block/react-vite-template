@@ -14,7 +14,7 @@ type ModalSize = {
 export interface ModalProps {
   className?: string;
   isOpen: boolean;
-  onClose: (props: unknown) => void;
+  onClose: (...args: unknown[]) => void;
   isBackground?: boolean;
   isDisabledScroll?: boolean;
   size?: ModalSize

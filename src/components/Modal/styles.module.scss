@@ -1,5 +1,6 @@
 @import '../../assets/styles/variables';
 @import '../../assets/styles/mixins';
+@import '/src/assets/styles/component-variables/color-constants';
 
 
 .modal {
@@ -11,13 +12,13 @@
   box-shadow: 0 0 60px 10px rgba;
 }
 .modalOutside {
-  position: absolute;
-  width: 100%;
-  height: 100%;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
   top: 0;
   left: 0;
   &.backgroundColor {
-    background: rgba(0,0,0,.5);
+    background: $colorWhite50;
 
   }
 }
@@ -44,13 +45,4 @@
     right: 5%;
 
   }
-}
-.modalBody {
-  // position: absolute;
-  // top: 0;
-  // left: 0;
-  // width: 100%;
-  // height: 100%;
-  // overflow: auto;
-  // padding: 20px 50px 20px 20px;
 }

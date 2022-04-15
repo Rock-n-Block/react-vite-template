@@ -12,8 +12,8 @@
 @import './component-variables/toastify';
 @import './component-variables/filled-secondary-button';
 @import './component-variables/card';
-@import './component-variables/checkout';
 @import './component-variables/checkbox';
+@import './component-variables/contractCard';
 
 :root {
   $colors: (
@@ -27,11 +27,12 @@
     $tableColorsDefault,
     $tooltipColorsDefault,
     $cardColorDefault,
-    $checkoutColorDefault,
     $toastifyColorsDefault,
     $filledSecondaryButtonColorsDefault,
     $checkboxColorsDefault,
     $breadcrumbsColorsDefault,
+    $contractCardColorDefault,
+    $sliderColorDefault,
   );
   @each $key_name in $colors {
     @each $key_name_2, $value in $key_name {
@@ -51,14 +52,16 @@
     $tableColorsLight,
     $tooltipColorsLight,
     $cardColorLight,
-    $checkoutColorLight,
     $filledSecondaryButtonColorsLight,
     $checkboxColorsDefault,
     $breadcrumbsColorsDefault,
+    $contractCardColorLight,
+    $sliderColorLight
   );
   @each $key_name in $colors {
     @each $key_name_2, $value in $key_name {
       --#{$key_name_2}: #{$value};
     }
   }
+
 }

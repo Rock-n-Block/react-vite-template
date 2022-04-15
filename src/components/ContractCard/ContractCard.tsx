@@ -4,14 +4,14 @@ import cn from 'clsx';
 import { H2 } from 'components';
 import styles from './styles.module.scss';
 
-export interface СheckoutProps {
+export interface ContractCardProps {
   className?: string;
   image?: string;
   title?: string;
   description?: string;
 }
 
-export const Сheckout: VFC<СheckoutProps> = ({ image, title, description, className }) => {
+export const ContractCard: VFC<ContractCardProps> = ({ image, title, description, className }) => {
   return (
     <Card>
       <div className={cn(styles.titleWrapper, className)}>

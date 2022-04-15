@@ -1,13 +1,13 @@
 import { render } from '@testing-library/react';
 
-import { Сheckout } from './Сheckout';
-import { сheckoutPropsMocked } from './Сheckout.mock';
+import { Slider } from './Slider';
+import { sliderPropsMocked } from './Slider.mock';
 
-describe('Сheckout', () => {
+describe('Slider', () => {
   it('should render', () => {
     const { container } = render(
-      <Сheckout
-        {...сheckoutPropsMocked}
+      <Slider
+        {...sliderPropsMocked}
       />,
     );
     expect(container).toMatchSnapshot();

@@ -22,9 +22,8 @@ const Template: ComponentStory<typeof Modal> = (args) => {
         isOpen={isOpen}
         onClose={onButtonClickHandler}
         isBackground
-        size={{ width: '500px', height: '123px' }}
+        size="md"
       />
-
     </>
   );
 };

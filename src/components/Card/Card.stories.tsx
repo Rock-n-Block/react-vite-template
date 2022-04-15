@@ -10,7 +10,7 @@ export default {
 
 const Template: ComponentStory<typeof Card> = (args) => (
   <>
-    <Card {...args} />
+    <Card {...args}>adakdnalsdnaslkdnlkasdnlaksdnalksdnlk</Card>
   </>
 );
 export const Default = Template.bind({});

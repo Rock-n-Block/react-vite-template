@@ -1,25 +1,21 @@
-/* eslint-disable @typescript-eslint/no-unused-expressions */
 import { FC, useEffect } from 'react';
 
 import cn from 'clsx';
 import { Card } from 'components/Card';
 import { CloseIcon } from 'assets/icons/icons/components';
 import { Text } from 'components/Typography';
+import { CardSize } from 'components/Card/Card.types';
+import { Button } from 'components/Button';
 import styles from './styles.module.scss';
 
-type ModalSize = {
-  width?: string;
-  height?: string;
-};
 export interface ModalProps {
   className?: string;
   isOpen: boolean;
   onClose: (...args: unknown[]) => void;
   isBackground?: boolean;
   isDisabledScroll?: boolean;
-  size?: ModalSize
+  size?: CardSize;
   title?: string;
-
 }
 
 export const Modal: FC<ModalProps> = ({
@@ -34,9 +30,11 @@ export const Modal: FC<ModalProps> = ({
 }) => {
   useEffect(() => {
     const { body } = document;
-    const modalCard = document.getElementsByClassName('modalCard')[0];
-    isDisabledScroll && isOpen ? body.style.setProperty('overflow', 'hidden') : body.style.setProperty('overflow', 'visible');
-    isOpen && size ? modalCard.setAttribute('style', `width:${size.width} !important; height:${size.height} !important`) : '';
+    if (isDisabledScroll && isOpen) {
+      body.style.setProperty('overflow', 'hidden');
+    } else {
+      body.style.setProperty('overflow', 'visible');
+    }
   }, [isDisabledScroll, isOpen, size]);
   return (
     <>
@@ -48,32 +46,24 @@ export const Modal: FC<ModalProps> = ({
         )}
         onClick={onClose}
       />
-      <div
+      <Card
+        size={size}
         className={cn(
-          styles.modal,
-          className,
+          styles.modalContent,
           { [styles.closed]: !isOpen },
+          className,
         )}
       >
-        <Card className={cn(styles.modalContent, 'modalCard')}>
-          <div
-            className={styles.modalHeader}
-          >
-            <Text size="l">
-              {title}
-            </Text>
-            <div className={styles.closeButton} onClick={onClose}>
-              <CloseIcon />
-
-            </div>
-          </div>
-
-          <div className={styles.modalBody}>
-            {children}
-          </div>
-        </Card>
-      </div>
+        <div className={styles.modalHeader}>
+          <Text size="l">
+            {title}
+          </Text>
+          <Button variant="text" className={styles.closeButton} onClick={onClose}>
+            <CloseIcon />
+          </Button>
+        </div>
+        {children}
+      </Card>
     </>
-
   );
 };

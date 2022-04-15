@@ -10,7 +10,24 @@
   margin: 0 auto;
   max-width: 350px;
   min-height: 224px;
+}
 
+.sm {
+  min-width: 350px;
+  min-height: 224px;
+}
+
+.md {
+  min-width: 420px;
+  min-height: 300px;
+}
+
+.lg {
+  min-width: 500px;
+  min-height: 350px;
+}
+
+.hoverEffect {
   &:hover {
     border: 1px solid var(--card-default-hover);
   }

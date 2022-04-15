@@ -17,3 +17,4 @@ export enum WalletProviders {
 }
 
 export type Nullable<T> = null | T;
+export type Optinable<T> = undefined | T;

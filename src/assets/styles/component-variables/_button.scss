@@ -24,7 +24,7 @@ $buttonColorsDefault: (
   ////filled
   //background
   "button-filled-default-background": $colorGreenGradient,
-  "button-filled-hover-background": linear-gradient(90deg, #BF8FFB 0%, #877EF6 100%),
+  "button-filled-hover-background": $colorGradientPurple,
   "button-filled-active-background": $colorGreenAcid,
   //border
   "button-filled-default-border": transparent,
@@ -66,7 +66,7 @@ $buttonColorsLight: (
   ////filled
   //background
   "button-filled-default-background": $colorGreenGradient,
-  "button-filled-hover-background": linear-gradient(90deg, #BF8FFB 0%, #877EF6 100%),
+  "button-filled-hover-background": $colorGradientPurple,
   "button-filled-active-background": $colorGreenAcid,
   //border
   "button-filled-default-border": transparent,

@@ -1,13 +1,13 @@
 import { render } from '@testing-library/react';
 
-import { Modal } from './Modal';
-import { modalPropsMocked } from './Modal.mock';
+import { Checkbox } from './Checkbox';
+import { checkboxPropsMocked } from './Checkbox.mock';
 
-describe('Modal', () => {
+describe('Checkbox', () => {
   it('should render', () => {
     const { container } = render(
-      <Modal
-        {...modalPropsMocked}
+      <Checkbox
+        {...checkboxPropsMocked}
       />,
     );
     expect(container).toMatchSnapshot();

@@ -1,2 +1,2 @@
-export * from './Modal';
+export * from './Breadcrumbs';
 export * from './styles.module.scss';

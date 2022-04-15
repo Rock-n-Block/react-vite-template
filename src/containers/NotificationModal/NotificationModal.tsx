@@ -43,7 +43,7 @@ export const NotificationModal: VFC<NotificationModalProps> = ({ className, ...p
   );
 
   return (
-    <Modal open={modalState.open} size="lg" onClose={closeModal} className={clsx(styles.root, className)} {...props}>
+    <Modal isOpen={modalState.open} onClose={closeModal} className={clsx(styles.root, className)} {...props}>
       <div>
         <div className={clsx(styles.title, 'modalTitle')}>
           {data?.title1} <span>{data?.title2}</span>

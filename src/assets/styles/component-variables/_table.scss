@@ -1,21 +1,21 @@
 $tableColorsDefault: (
-  "table-head-default-background":#25272E,
-  "table-head-default-color":#F2F2F2,
+  "table-head-default-background":$colorBlack500,
+  "table-head-default-color":$colorGrey500,
 
-  "table-row-default-background":#28292C,
-  "table-row-secondary-background":#25272E,
+  "table-row-default-background":$colorCharcoalGrey,
+  "table-row-secondary-background":$colorBlack500,
 
-  "table-pagination-active-background":#25272E,
-  "table-pagination-disabled-background":#28292C,
+  "table-pagination-active-background":$colorBlack500,
+  "table-pagination-disabled-background":$colorCharcoalGrey,
 );
 
 $tableColorsLight: (
-  "table-head-default-background":#DFE3EC,
-  "table-head-default-color":#495057,
+  "table-head-default-background":$colorGlacierWhite,
+  "table-head-default-color": $colorSavoyGray,
 
-  "table-row-default-background":#F4F7FE,
-  "table-row-secondary-background":#DFE3EC,
+  "table-row-default-background":$colorMoonstone,
+  "table-row-secondary-background":$colorGlacierWhite,
 
-  "table-pagination-active-background":#DFE3EC,
-  "table-pagination-disabled-background":#F4F7FE,
+  "table-pagination-active-background":$colorGlacierWhite,
+  "table-pagination-disabled-background":$colorMoonstone,
 );

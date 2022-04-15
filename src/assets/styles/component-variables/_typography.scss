@@ -1,11 +1,11 @@
 $typographyColorsDefault: (
-  "typography-default-color": #FFFFFF,
-  "typography-secondary-color": #EEEEEE,
-  "typography-error-color": #FF4040,
+  "typography-default-color": $colorWhite,
+  "typography-secondary-color": $colorOlympicWhite,
+  "typography-error-color": $colorRed,
 );
 
 $typographyColorsLight: (
-  "typography-default-color": #192038,
-  "typography-secondary-color": #8A7FF6,
-  "typography-error-color": #FF4040,
+  "typography-default-color": $colorOxfordBlue,
+  "typography-secondary-color": $colorGreenAcid,
+  "typography-error-color": $colorRed,
 );

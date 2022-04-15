@@ -1,4 +1,5 @@
-import React from 'react';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
+import { useState } from 'react';
 
 import { Modal } from './Modal';
 import { modalPropsMocked } from './Modal.mock';
@@ -6,12 +7,27 @@ import { modalPropsMocked } from './Modal.mock';
 export default {
   title: 'components/Modal',
   component: Modal,
-};
+} as ComponentMeta<typeof Modal>;
 
-export const Default: React.FC = () => (
-  <>
-    <div>
-      <Modal {...modalPropsMocked} />
-    </div>
-  </>
-);
+const Template: ComponentStory<typeof Modal> = (args) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const onButtonClickHandler = () => {
+    setIsOpen(!isOpen);
+  };
+  return (
+    <>
+      <button type="button" onClick={onButtonClickHandler}> Open modal </button>
+      <Modal
+        {...args}
+        isOpen={isOpen}
+        onClose={onButtonClickHandler}
+        isBackground
+        size={{ width: '500px', height: '123px' }}
+      />
+
+    </>
+  );
+};
+export const Default = Template.bind({});
+
+Default.args = modalPropsMocked;

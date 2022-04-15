@@ -1,2 +1,2 @@
-export * from './Сheckout';
+export * from './Slider';
 export * from './styles.module.scss';

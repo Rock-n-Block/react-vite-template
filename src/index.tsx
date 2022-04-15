@@ -13,6 +13,7 @@ const root = document.getElementById('root');
 
 const app = (
   <Provider store={store.store}>
+    {/* @ts-ignore */}
     <PersistGate loading={null} persistor={store.persistor}>
       <Router>
         <App />

@@ -15,3 +15,5 @@ export interface IModalProps {
 export enum WalletProviders {
   metamask = 'MetaMask',
 }
+
+export type Nullable<T> = null | T;

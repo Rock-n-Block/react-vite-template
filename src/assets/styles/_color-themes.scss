@@ -10,7 +10,8 @@
 @import './component-variables/toastify';
 @import './component-variables/filled_secondary_button';
 @import './component-variables//card';
-@import './component-variables//checkout';
+@import './component-variables//contractCard';
+@import './component-variables/slider';
 
 :root {
   $colors: (
@@ -24,7 +25,8 @@
     $tableColorsDefault,
     $tooltipColorsDefault,
     $cardColorDefault,
-    $checkoutColorDefault
+    $contractCardColorDefault,
+    $sliderColorDefault,
   );
   @each $key_name in $colors {
     @each $key_name_2, $value in $key_name {
@@ -44,11 +46,13 @@
     $tableColorsLight,
     $tooltipColorsLight,
     $cardColorLight,
-    $checkoutColorLight
+    $contractCardColorLight,
+    $sliderColorLight
   );
   @each $key_name in $colors {
     @each $key_name_2, $value in $key_name {
       --#{$key_name_2}: #{$value};
     }
   }
+
 }

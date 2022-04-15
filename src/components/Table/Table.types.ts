@@ -2,7 +2,7 @@ import { Row as ReactTableRow } from 'react-table';
 
 export type TableRowProps<T extends object = {}> = {
   row: ReactTableRow<T>,
-  isOdd: boolean;
+  isOdd?: boolean;
   className?: string,
   classNameCell?: string,
 };
